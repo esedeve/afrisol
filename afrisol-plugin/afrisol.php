@@ -558,8 +558,14 @@ function afrisol_rewrite_rules() {
     add_rewrite_rule('^get-quote/?$', 'index.php?afrisol_page=get-quote', 'top');
     add_rewrite_rule('^book-repair/?$', 'index.php?afrisol_page=book-repair', 'top');
     add_rewrite_rule('^customer-portal/?$', 'index.php?afrisol_page=customer-portal', 'top');
+    add_rewrite_rule('^my-account/?$', 'index.php?afrisol_page=customer-portal', 'top');
     add_rewrite_rule('^cart/?$', 'index.php?afrisol_page=cart', 'top');
     add_rewrite_rule('^checkout/?$', 'index.php?afrisol_page=checkout', 'top');
+    add_rewrite_rule('^products/?$', 'index.php?afrisol_page=products', 'top');
+    add_rewrite_rule('^services/?$', 'index.php?afrisol_page=services', 'top');
+    add_rewrite_rule('^about/?$', 'index.php?afrisol_page=about', 'top');
+    add_rewrite_rule('^contact/?$', 'index.php?afrisol_page=contact', 'top');
+    add_rewrite_rule('^blog/?$', 'index.php?afrisol_page=blog', 'top');
 }
 add_action('init', 'afrisol_rewrite_rules');
 
