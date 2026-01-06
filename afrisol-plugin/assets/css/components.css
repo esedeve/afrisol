@@ -1,0 +1,1520 @@
+/**
+ * Afrisol - Component Styles
+ * Header, Footer, Widgets, and UI Components
+ */
+
+/* ===== Header ===== */
+.afrisol-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all var(--transition-normal);
+}
+
+.afrisol-header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 0;
+}
+
+.afrisol-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.afrisol-logo {
+    display: flex;
+    align-items: center;
+}
+
+.afrisol-logo img {
+    height: 50px;
+    width: auto;
+    transition: height var(--transition-normal);
+}
+
+.afrisol-header.scrolled .afrisol-logo img {
+    height: 40px;
+}
+
+/* Navigation */
+.afrisol-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.afrisol-nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+    margin: 0;
+    padding: 0;
+}
+
+.afrisol-nav-item {
+    position: relative;
+}
+
+.afrisol-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--afrisol-black);
+    transition: color var(--transition-fast);
+}
+
+.afrisol-nav-link:hover,
+.afrisol-nav-link.active {
+    color: var(--afrisol-primary);
+}
+
+.afrisol-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--afrisol-secondary);
+    transform: scaleX(0);
+    transition: transform var(--transition-fast);
+}
+
+.afrisol-nav-link:hover::after,
+.afrisol-nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* Dropdown Menu */
+.afrisol-nav-item.has-dropdown {
+    position: relative;
+}
+
+.afrisol-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: var(--afrisol-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-fast);
+    padding: var(--spacing-sm) 0;
+    z-index: 100;
+}
+
+.afrisol-nav-item.has-dropdown:hover .afrisol-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.afrisol-dropdown-item {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    color: var(--afrisol-gray-dark);
+    transition: all var(--transition-fast);
+}
+
+.afrisol-dropdown-item:hover {
+    background: var(--afrisol-gray-light);
+    color: var(--afrisol-primary);
+    padding-left: calc(var(--spacing-lg) + 5px);
+}
+
+/* Header Actions */
+.afrisol-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.afrisol-header-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--afrisol-gray-light);
+    color: var(--afrisol-gray-dark);
+    transition: all var(--transition-fast);
+}
+
+.afrisol-header-icon:hover {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-header-icon .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--afrisol-secondary);
+    color: var(--afrisol-white);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+}
+
+/* Mobile Menu Toggle */
+.afrisol-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.afrisol-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--afrisol-black);
+    border-radius: 3px;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.afrisol-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.afrisol-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Navigation */
+@media (max-width: 992px) {
+    .afrisol-menu-toggle {
+        display: flex;
+    }
+    
+    .afrisol-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: var(--afrisol-white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px var(--spacing-xl) var(--spacing-xl);
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+        transition: right var(--transition-normal);
+        overflow-y: auto;
+    }
+    
+    .afrisol-nav.active {
+        right: 0;
+    }
+    
+    .afrisol-nav-menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+    
+    .afrisol-nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--afrisol-gray-light);
+    }
+    
+    .afrisol-nav-link {
+        padding: var(--spacing-md);
+        width: 100%;
+    }
+    
+    .afrisol-nav-link:hover {
+        background: linear-gradient(90deg, var(--afrisol-primary) 0%, transparent 100%);
+        color: var(--afrisol-white);
+    }
+    
+    .afrisol-dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        display: none;
+        background: var(--afrisol-gray-light);
+        border-radius: 0;
+    }
+    
+    .afrisol-nav-item.has-dropdown.open .afrisol-dropdown {
+        display: block;
+    }
+    
+    .afrisol-header-actions .afrisol-btn {
+        display: none;
+    }
+}
+
+/* ===== Hero Slider ===== */
+.afrisol-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 900px;
+    overflow: hidden;
+}
+
+.afrisol-hero-slider {
+    width: 100%;
+    height: 100%;
+}
+
+.afrisol-hero-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.afrisol-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.afrisol-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.afrisol-hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(27, 94, 32, 0.85) 0%,
+        rgba(27, 94, 32, 0.6) 50%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+}
+
+.afrisol-hero-content {
+    position: relative;
+    max-width: 700px;
+    color: var(--afrisol-white);
+    padding: 0 var(--spacing-xl);
+}
+
+.afrisol-hero-subtitle {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(255, 152, 0, 0.9);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    color: var(--afrisol-white);
+}
+
+.afrisol-hero-title .highlight {
+    color: var(--afrisol-secondary);
+}
+
+.afrisol-hero-desc {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-xl);
+    opacity: 0.9;
+    color: var(--afrisol-white);
+}
+
+.afrisol-hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.afrisol-hero-pagination {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.afrisol-hero-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    margin: 0 5px;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-hero-pagination .swiper-pagination-bullet-active {
+    width: 30px;
+    border-radius: 6px;
+    background: var(--afrisol-secondary);
+}
+
+@media (max-width: 768px) {
+    .afrisol-hero {
+        min-height: 500px;
+        height: auto;
+        padding: 120px 0 60px;
+    }
+    
+    .afrisol-hero-content {
+        text-align: center;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .afrisol-hero-buttons {
+        justify-content: center;
+    }
+}
+
+/* ===== Trust Indicators ===== */
+.afrisol-trust-section {
+    background: var(--afrisol-white);
+    padding: var(--spacing-2xl) 0;
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.afrisol-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.afrisol-trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--afrisol-cream);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+}
+
+.afrisol-trust-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.afrisol-trust-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
+    color: var(--afrisol-white);
+    border-radius: var(--radius-md);
+    font-size: 1.5rem;
+}
+
+.afrisol-trust-content h4 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.afrisol-trust-content p {
+    font-size: 0.875rem;
+    color: var(--afrisol-gray);
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .afrisol-trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .afrisol-trust-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Services Section ===== */
+.afrisol-services-section {
+    background: var(--afrisol-cream);
+}
+
+.afrisol-service-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--glass-border);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.afrisol-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--afrisol-primary), var(--afrisol-secondary));
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.afrisol-service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.afrisol-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.afrisol-service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
+    color: var(--afrisol-white);
+    border-radius: 50%;
+    font-size: 2rem;
+    transition: all var(--transition-normal);
+}
+
+.afrisol-service-card:hover .afrisol-service-icon {
+    background: linear-gradient(135deg, var(--afrisol-secondary) 0%, var(--afrisol-secondary-light) 100%);
+    transform: scale(1.1);
+}
+
+.afrisol-service-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-service-card p {
+    font-size: 0.9rem;
+    color: var(--afrisol-gray);
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-service-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-service-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) 0;
+    font-size: 0.875rem;
+    color: var(--afrisol-gray-dark);
+}
+
+.afrisol-service-features li i {
+    color: var(--afrisol-primary);
+}
+
+/* ===== Why Choose Us ===== */
+.afrisol-why-section {
+    background: var(--afrisol-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.afrisol-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+}
+
+.afrisol-why-image {
+    position: relative;
+}
+
+.afrisol-why-image-wrapper {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.afrisol-why-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    background: var(--afrisol-secondary);
+    border-radius: var(--radius-xl);
+    z-index: -1;
+}
+
+.afrisol-why-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+}
+
+.afrisol-why-stats {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+}
+
+.afrisol-why-stats-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.afrisol-why-stats-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+.afrisol-why-content h2 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-why-content > p {
+    color: var(--afrisol-gray);
+    margin-bottom: var(--spacing-xl);
+}
+
+.afrisol-why-list {
+    list-style: none;
+    margin-bottom: var(--spacing-xl);
+}
+
+.afrisol-why-item {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-why-item-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(27, 94, 32, 0.1);
+    color: var(--afrisol-primary);
+    border-radius: var(--radius-md);
+    font-size: 1.25rem;
+}
+
+.afrisol-why-item-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.afrisol-why-item-content p {
+    font-size: 0.9rem;
+    color: var(--afrisol-gray);
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .afrisol-why-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .afrisol-why-image {
+        order: -1;
+    }
+}
+
+/* ===== Featured Products ===== */
+.afrisol-products-section {
+    background: var(--afrisol-cream);
+}
+
+.afrisol-product-card {
+    background: var(--afrisol-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    position: relative;
+}
+
+.afrisol-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.afrisol-product-badges {
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    z-index: 5;
+}
+
+.afrisol-product-badge {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
+}
+
+.afrisol-product-badge.sale {
+    background: var(--afrisol-secondary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-product-badge.new {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-product-badge.featured {
+    background: #9C27B0;
+    color: var(--afrisol-white);
+}
+
+.afrisol-product-actions {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all var(--transition-normal);
+    z-index: 5;
+}
+
+.afrisol-product-card:hover .afrisol-product-actions {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.afrisol-product-action-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--afrisol-white);
+    border: none;
+    border-radius: 50%;
+    color: var(--afrisol-gray-dark);
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-fast);
+}
+
+.afrisol-product-action-btn:hover {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-product-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.afrisol-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.afrisol-product-card:hover .afrisol-product-image img {
+    transform: scale(1.05);
+}
+
+.afrisol-product-info {
+    padding: var(--spacing-lg);
+}
+
+.afrisol-product-category {
+    font-size: 0.75rem;
+    color: var(--afrisol-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.afrisol-product-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
+}
+
+.afrisol-product-title a {
+    color: var(--afrisol-black);
+}
+
+.afrisol-product-title a:hover {
+    color: var(--afrisol-primary);
+}
+
+.afrisol-product-rating {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.afrisol-product-rating .stars {
+    color: var(--afrisol-secondary);
+    font-size: 0.875rem;
+}
+
+.afrisol-product-rating .count {
+    font-size: 0.75rem;
+    color: var(--afrisol-gray);
+}
+
+.afrisol-product-price {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-product-price .current {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--afrisol-primary);
+}
+
+.afrisol-product-price .original {
+    font-size: 0.9rem;
+    color: var(--afrisol-gray);
+    text-decoration: line-through;
+}
+
+.afrisol-product-footer {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.afrisol-product-footer .afrisol-btn {
+    flex: 1;
+    justify-content: center;
+}
+
+/* ===== Testimonials ===== */
+.afrisol-testimonials-section {
+    background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
+    color: var(--afrisol-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.afrisol-testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 152, 0, 0.1);
+    border-radius: 50%;
+}
+
+.afrisol-testimonials-section .afrisol-section-header h2,
+.afrisol-testimonials-section .afrisol-section-header p {
+    color: var(--afrisol-white);
+}
+
+.afrisol-testimonial-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    position: relative;
+}
+
+.afrisol-testimonial-card::before {
+    content: '\f10d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.afrisol-testimonial-stars {
+    display: flex;
+    gap: 3px;
+    color: var(--afrisol-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+    color: var(--afrisol-white);
+}
+
+.afrisol-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.afrisol-testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--afrisol-secondary);
+}
+
+.afrisol-testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.afrisol-testimonial-info h4 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--afrisol-white);
+}
+
+.afrisol-testimonial-location {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+.afrisol-testimonial-location i {
+    color: var(--afrisol-secondary);
+}
+
+.afrisol-google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    padding: 0.25rem 0.75rem;
+    background: var(--afrisol-white);
+    color: var(--afrisol-gray-dark);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.afrisol-google-badge img {
+    width: 16px;
+    height: 16px;
+}
+
+/* ===== Map Section ===== */
+.afrisol-map-section {
+    background: var(--afrisol-white);
+}
+
+.afrisol-map-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-2xl);
+    align-items: stretch;
+}
+
+.afrisol-map-info {
+    padding: var(--spacing-xl);
+}
+
+.afrisol-map-info h3 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-contact-details {
+    list-style: none;
+    margin-bottom: var(--spacing-xl);
+}
+
+.afrisol-contact-item {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-contact-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(27, 94, 32, 0.1);
+    color: var(--afrisol-primary);
+    border-radius: var(--radius-md);
+}
+
+.afrisol-contact-text h4 {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.afrisol-contact-text p,
+.afrisol-contact-text a {
+    font-size: 0.9rem;
+    color: var(--afrisol-gray);
+    margin: 0;
+}
+
+.afrisol-contact-text a:hover {
+    color: var(--afrisol-primary);
+}
+
+.afrisol-map-wrapper {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 400px;
+    box-shadow: var(--shadow-lg);
+}
+
+.afrisol-map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 992px) {
+    .afrisol-map-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Contact Form Section ===== */
+.afrisol-contact-section {
+    background: var(--afrisol-cream);
+}
+
+.afrisol-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+}
+
+.afrisol-contact-form-wrapper {
+    background: var(--afrisol-white);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.afrisol-contact-form-wrapper h3 {
+    margin-bottom: var(--spacing-xl);
+}
+
+.afrisol-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 576px) {
+    .afrisol-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.afrisol-contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.afrisol-info-card {
+    background: var(--afrisol-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+.afrisol-info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.afrisol-info-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
+    color: var(--afrisol-white);
+    border-radius: var(--radius-md);
+    font-size: 1.25rem;
+}
+
+.afrisol-info-content h4 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.afrisol-info-content p,
+.afrisol-info-content a {
+    font-size: 0.9rem;
+    color: var(--afrisol-gray);
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .afrisol-contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Footer ===== */
+.afrisol-footer {
+    background: var(--afrisol-black);
+    color: var(--afrisol-white);
+    padding-top: var(--spacing-3xl);
+}
+
+.afrisol-footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.afrisol-footer-logo {
+    max-width: 150px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-footer-about p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-footer-social {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.afrisol-social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--afrisol-white);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-social-link:hover {
+    background: var(--afrisol-secondary);
+    color: var(--afrisol-white);
+    transform: translateY(-3px);
+}
+
+.afrisol-footer-title {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--afrisol-white);
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+}
+
+.afrisol-footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--afrisol-secondary);
+}
+
+.afrisol-footer-links {
+    list-style: none;
+}
+
+.afrisol-footer-links li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.afrisol-footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.afrisol-footer-links a::before {
+    content: '\f054';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.625rem;
+    color: var(--afrisol-secondary);
+}
+
+.afrisol-footer-links a:hover {
+    color: var(--afrisol-secondary);
+    padding-left: 5px;
+}
+
+.afrisol-footer-contact {
+    list-style: none;
+}
+
+.afrisol-footer-contact li {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-footer-contact i {
+    color: var(--afrisol-secondary);
+    width: 20px;
+}
+
+.afrisol-footer-contact span,
+.afrisol-footer-contact a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.afrisol-footer-contact a:hover {
+    color: var(--afrisol-secondary);
+}
+
+.afrisol-footer-bottom {
+    padding: var(--spacing-lg) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.afrisol-copyright {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+.afrisol-footer-bottom-links {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.afrisol-footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+.afrisol-footer-bottom-links a:hover {
+    color: var(--afrisol-secondary);
+}
+
+@media (max-width: 992px) {
+    .afrisol-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .afrisol-footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .afrisol-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ===== Scroll to Top ===== */
+.afrisol-scroll-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--afrisol-white);
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-normal);
+    z-index: 999;
+}
+
+.afrisol-scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.afrisol-scroll-top:hover {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-scroll-top .progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+}
+
+.afrisol-scroll-top .progress-ring__circle {
+    stroke-dasharray: 138.23;
+    stroke-dashoffset: 138.23;
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+.afrisol-scroll-top i {
+    font-size: 1rem;
+    color: var(--afrisol-primary);
+    transition: color var(--transition-fast);
+}
+
+.afrisol-scroll-top:hover i {
+    color: var(--afrisol-white);
+}
+
+/* ===== WhatsApp Widget ===== */
+.afrisol-whatsapp-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+}
+
+.whatsapp-btn {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #25D366;
+    color: var(--afrisol-white);
+    border-radius: 50%;
+    font-size: 1.75rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: all var(--transition-normal);
+    position: relative;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    color: var(--afrisol-white);
+}
+
+.whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #25D366;
+    animation: pulse-whatsapp 2s ease-out infinite;
+    z-index: -1;
+}
+
+@keyframes pulse-whatsapp {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem 1rem;
+    background: var(--afrisol-black);
+    color: var(--afrisol-white);
+    font-size: 0.875rem;
+    white-space: nowrap;
+    border-radius: var(--radius-md);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+}
+
+.whatsapp-btn:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    right: 75px;
+}
+
+/* ===== PWA Install Prompt ===== */
+.afrisol-pwa-prompt {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--afrisol-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-lg);
+    max-width: 350px;
+    width: 90%;
+    z-index: 9999;
+    animation: slideUp var(--transition-normal) ease-out;
+}
+
+.pwa-prompt-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pwa-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.pwa-prompt-text h4 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.pwa-prompt-text p {
+    font-size: 0.875rem;
+    color: var(--afrisol-gray);
+    margin-bottom: var(--spacing-lg);
+}
+
+.pwa-prompt-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.pwa-install-btn {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+    border: none;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.pwa-install-btn:hover {
+    background: var(--afrisol-primary-light);
+}
+
+.pwa-dismiss-btn {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: transparent;
+    color: var(--afrisol-gray);
+    border: 1px solid var(--afrisol-gray-light);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.pwa-dismiss-btn:hover {
+    border-color: var(--afrisol-gray);
+}

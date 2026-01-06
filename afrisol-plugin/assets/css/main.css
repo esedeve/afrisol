@@ -1,0 +1,985 @@
+/**
+ * Afrisol - Main Styles
+ * Solar Solutions for a Sustainable Africa
+ * 
+ * Colors:
+ * - Primary (Deep Green): #1B5E20
+ * - Secondary (Warm Orange/Gold): #FF9800
+ * - Background (Cream): #FFF8F0
+ * - White: #FFFFFF
+ */
+
+/* ===== CSS Variables ===== */
+:root {
+    /* Brand Colors */
+    --afrisol-primary: #1B5E20;
+    --afrisol-primary-light: #2E7D32;
+    --afrisol-primary-dark: #1B5E20;
+    --afrisol-secondary: #FF9800;
+    --afrisol-secondary-light: #FFB74D;
+    --afrisol-secondary-dark: #F57C00;
+    --afrisol-cream: #FFF8F0;
+    --afrisol-white: #FFFFFF;
+    --afrisol-black: #1A1A1A;
+    --afrisol-gray: #757575;
+    --afrisol-gray-light: #F5F5F5;
+    --afrisol-gray-dark: #424242;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    
+    /* Container */
+    --container-max: 1280px;
+    --container-padding: 1rem;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--afrisol-black);
+    background-color: var(--afrisol-cream);
+    overflow-x: hidden;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--afrisol-black);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--afrisol-gray-dark);
+}
+
+a {
+    color: var(--afrisol-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--afrisol-secondary);
+}
+
+/* ===== Sparkling Header Effect ===== */
+.afrisol-sparkle-text {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(
+        90deg,
+        var(--afrisol-primary) 0%,
+        var(--afrisol-secondary) 25%,
+        var(--afrisol-primary) 50%,
+        var(--afrisol-secondary) 75%,
+        var(--afrisol-primary) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: sparkle 3s linear infinite;
+}
+
+@keyframes sparkle {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.afrisol-sparkle-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 70%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% -200%; }
+    100% { background-position: 200% 200%; }
+}
+
+/* ===== Container ===== */
+.afrisol-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.afrisol-container-fluid {
+    width: 100%;
+    padding: 0 var(--container-padding);
+}
+
+/* ===== Sections ===== */
+.afrisol-section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.afrisol-section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.afrisol-section-header h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-section-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--afrisol-gray);
+}
+
+/* ===== Buttons ===== */
+.afrisol-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 0.5rem 1.25rem;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.afrisol-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left var(--transition-slow);
+}
+
+.afrisol-btn:hover::before {
+    left: 100%;
+}
+
+.afrisol-btn-primary {
+    background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
+    color: var(--afrisol-white);
+    box-shadow: 0 4px 15px rgba(27, 94, 32, 0.3);
+}
+
+.afrisol-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(27, 94, 32, 0.4);
+    color: var(--afrisol-white);
+}
+
+.afrisol-btn-secondary {
+    background: linear-gradient(135deg, var(--afrisol-secondary) 0%, var(--afrisol-secondary-light) 100%);
+    color: var(--afrisol-white);
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.afrisol-btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+    color: var(--afrisol-white);
+}
+
+.afrisol-btn-outline {
+    background: transparent;
+    border: 2px solid var(--afrisol-primary);
+    color: var(--afrisol-primary);
+}
+
+.afrisol-btn-outline:hover {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+    transform: translateY(-2px);
+}
+
+.afrisol-btn-outline-white {
+    background: transparent;
+    border: 2px solid var(--afrisol-white);
+    color: var(--afrisol-white);
+}
+
+.afrisol-btn-outline-white:hover {
+    background: var(--afrisol-white);
+    color: var(--afrisol-primary);
+    transform: translateY(-2px);
+}
+
+.afrisol-btn-sm {
+    padding: 0.375rem 1rem;
+    font-size: 0.75rem;
+}
+
+.afrisol-btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+}
+
+/* ===== Glassmorphism Cards ===== */
+.afrisol-glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-normal);
+}
+
+.afrisol-glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+}
+
+.afrisol-card {
+    background: var(--afrisol-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-normal);
+}
+
+.afrisol-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ===== Grid System ===== */
+.afrisol-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.afrisol-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.afrisol-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.afrisol-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 992px) {
+    .afrisol-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .afrisol-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .afrisol-grid-2,
+    .afrisol-grid-3,
+    .afrisol-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Flex Utilities ===== */
+.afrisol-flex {
+    display: flex;
+}
+
+.afrisol-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.afrisol-flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.afrisol-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.afrisol-gap-sm { gap: var(--spacing-sm); }
+.afrisol-gap-md { gap: var(--spacing-md); }
+.afrisol-gap-lg { gap: var(--spacing-lg); }
+
+/* ===== Forms ===== */
+.afrisol-form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-form-label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--afrisol-black);
+}
+
+.afrisol-form-input,
+.afrisol-form-select,
+.afrisol-form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 2px solid var(--afrisol-gray-light);
+    border-radius: var(--radius-md);
+    background: var(--afrisol-white);
+    transition: all var(--transition-fast);
+}
+
+.afrisol-form-input:focus,
+.afrisol-form-select:focus,
+.afrisol-form-textarea:focus {
+    outline: none;
+    border-color: var(--afrisol-primary);
+    box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.1);
+}
+
+.afrisol-form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.afrisol-form-checkbox,
+.afrisol-form-radio {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.afrisol-form-checkbox input,
+.afrisol-form-radio input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--afrisol-primary);
+}
+
+/* ===== Loading Spinner ===== */
+.afrisol-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--afrisol-gray-light);
+    border-top-color: var(--afrisol-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Badges ===== */
+.afrisol-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+}
+
+.afrisol-badge-primary {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-badge-secondary {
+    background: var(--afrisol-secondary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-badge-success {
+    background: #4CAF50;
+    color: var(--afrisol-white);
+}
+
+.afrisol-badge-warning {
+    background: #FFC107;
+    color: var(--afrisol-black);
+}
+
+.afrisol-badge-danger {
+    background: #F44336;
+    color: var(--afrisol-white);
+}
+
+/* ===== Star Ratings ===== */
+.afrisol-stars {
+    display: inline-flex;
+    gap: 2px;
+    color: var(--afrisol-secondary);
+}
+
+.afrisol-stars i {
+    font-size: 1rem;
+}
+
+.afrisol-stars .empty {
+    color: var(--afrisol-gray-light);
+}
+
+/* ===== Price Display ===== */
+.afrisol-price {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--afrisol-primary);
+}
+
+.afrisol-price-original {
+    text-decoration: line-through;
+    color: var(--afrisol-gray);
+    font-size: 0.875em;
+    margin-right: var(--spacing-sm);
+}
+
+.afrisol-price-sale {
+    color: var(--afrisol-secondary);
+}
+
+/* ===== Stock Status ===== */
+.afrisol-stock {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+}
+
+.afrisol-stock-in {
+    color: #4CAF50;
+}
+
+.afrisol-stock-out {
+    color: #F44336;
+}
+
+.afrisol-stock-low {
+    color: #FF9800;
+}
+
+/* ===== Animations ===== */
+.afrisol-fade-in {
+    animation: fadeIn var(--transition-slow) ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.afrisol-slide-up {
+    animation: slideUp var(--transition-slow) ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.afrisol-scale-in {
+    animation: scaleIn var(--transition-normal) ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scroll Animation Classes */
+.afrisol-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.afrisol-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.afrisol-animate-delay-1 { transition-delay: 0.1s; }
+.afrisol-animate-delay-2 { transition-delay: 0.2s; }
+.afrisol-animate-delay-3 { transition-delay: 0.3s; }
+.afrisol-animate-delay-4 { transition-delay: 0.4s; }
+
+/* ===== Utility Classes ===== */
+.afrisol-text-center { text-align: center; }
+.afrisol-text-left { text-align: left; }
+.afrisol-text-right { text-align: right; }
+
+.afrisol-text-primary { color: var(--afrisol-primary); }
+.afrisol-text-secondary { color: var(--afrisol-secondary); }
+.afrisol-text-white { color: var(--afrisol-white); }
+.afrisol-text-gray { color: var(--afrisol-gray); }
+
+.afrisol-bg-primary { background-color: var(--afrisol-primary); }
+.afrisol-bg-secondary { background-color: var(--afrisol-secondary); }
+.afrisol-bg-white { background-color: var(--afrisol-white); }
+.afrisol-bg-cream { background-color: var(--afrisol-cream); }
+
+.afrisol-mt-0 { margin-top: 0; }
+.afrisol-mt-1 { margin-top: var(--spacing-sm); }
+.afrisol-mt-2 { margin-top: var(--spacing-md); }
+.afrisol-mt-3 { margin-top: var(--spacing-lg); }
+.afrisol-mt-4 { margin-top: var(--spacing-xl); }
+
+.afrisol-mb-0 { margin-bottom: 0; }
+.afrisol-mb-1 { margin-bottom: var(--spacing-sm); }
+.afrisol-mb-2 { margin-bottom: var(--spacing-md); }
+.afrisol-mb-3 { margin-bottom: var(--spacing-lg); }
+.afrisol-mb-4 { margin-bottom: var(--spacing-xl); }
+
+.afrisol-p-0 { padding: 0; }
+.afrisol-p-1 { padding: var(--spacing-sm); }
+.afrisol-p-2 { padding: var(--spacing-md); }
+.afrisol-p-3 { padding: var(--spacing-lg); }
+.afrisol-p-4 { padding: var(--spacing-xl); }
+
+.afrisol-hidden { display: none !important; }
+.afrisol-visible { display: block !important; }
+
+@media (max-width: 768px) {
+    .afrisol-hidden-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+    .afrisol-hidden-desktop { display: none !important; }
+}
+
+/* ===== Image Styles ===== */
+.afrisol-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.afrisol-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.afrisol-img-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Lazy loading placeholder */
+.afrisol-lazy {
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.afrisol-lazy.loaded {
+    opacity: 1;
+}
+
+/* ===== Tooltip ===== */
+.afrisol-tooltip {
+    position: relative;
+}
+
+.afrisol-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 0.75rem;
+    background: var(--afrisol-black);
+    color: var(--afrisol-white);
+    font-size: 0.75rem;
+    white-space: nowrap;
+    border-radius: var(--radius-sm);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 5px);
+}
+
+/* ===== Modal ===== */
+.afrisol-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.afrisol-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.afrisol-modal {
+    background: var(--afrisol-white);
+    border-radius: var(--radius-lg);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform var(--transition-normal);
+}
+
+.afrisol-modal-overlay.active .afrisol-modal {
+    transform: scale(1);
+}
+
+.afrisol-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--afrisol-gray-light);
+}
+
+.afrisol-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--afrisol-gray);
+    transition: color var(--transition-fast);
+}
+
+.afrisol-modal-close:hover {
+    color: var(--afrisol-black);
+}
+
+.afrisol-modal-body {
+    padding: var(--spacing-lg);
+}
+
+.afrisol-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--afrisol-gray-light);
+}
+
+/* ===== Alert Messages ===== */
+.afrisol-alert {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.afrisol-alert-success {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border: 1px solid #A5D6A7;
+}
+
+.afrisol-alert-error {
+    background: #FFEBEE;
+    color: #C62828;
+    border: 1px solid #EF9A9A;
+}
+
+.afrisol-alert-warning {
+    background: #FFF3E0;
+    color: #E65100;
+    border: 1px solid #FFCC80;
+}
+
+.afrisol-alert-info {
+    background: #E3F2FD;
+    color: #1565C0;
+    border: 1px solid #90CAF9;
+}
+
+/* ===== Tab Navigation ===== */
+.afrisol-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    border-bottom: 2px solid var(--afrisol-gray-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-tab {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--afrisol-gray);
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.afrisol-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--afrisol-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-fast);
+}
+
+.afrisol-tab:hover,
+.afrisol-tab.active {
+    color: var(--afrisol-primary);
+}
+
+.afrisol-tab.active::after {
+    transform: scaleX(1);
+}
+
+.afrisol-tab-content {
+    display: none;
+}
+
+.afrisol-tab-content.active {
+    display: block;
+    animation: fadeIn var(--transition-normal) ease-out;
+}
+
+/* ===== Pagination ===== */
+.afrisol-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xl);
+}
+
+.afrisol-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--afrisol-white);
+    color: var(--afrisol-gray-dark);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-page-link:hover,
+.afrisol-page-link.active {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+/* ===== Breadcrumb ===== */
+.afrisol-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) 0;
+    font-size: 0.875rem;
+}
+
+.afrisol-breadcrumb a {
+    color: var(--afrisol-gray);
+}
+
+.afrisol-breadcrumb a:hover {
+    color: var(--afrisol-primary);
+}
+
+.afrisol-breadcrumb-separator {
+    color: var(--afrisol-gray-light);
+}
+
+.afrisol-breadcrumb-current {
+    color: var(--afrisol-primary);
+    font-weight: 600;
+}
+
+/* ===== Quantity Selector ===== */
+.afrisol-quantity {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid var(--afrisol-gray-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.afrisol-quantity-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--afrisol-gray-light);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-quantity-btn:hover {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-quantity-input {
+    width: 50px;
+    height: 36px;
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.afrisol-quantity-input:focus {
+    outline: none;
+}
+
+/* ===== Responsive Typography ===== */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .afrisol-section {
+        padding: var(--spacing-2xl) 0;
+    }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .afrisol-header,
+    .afrisol-footer,
+    .afrisol-whatsapp-widget,
+    .afrisol-scroll-top,
+    .afrisol-pwa-prompt {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .afrisol-glass-card {
+        background: white;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
