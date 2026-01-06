@@ -45,7 +45,7 @@ class Afrisol_Shortcodes {
         $cart_count = 0;
         if (class_exists('Afrisol_Cart')) {
             $cart = new Afrisol_Cart();
-            $cart_count = $cart->get_cart_count();
+            $cart_count = $cart->get_count();
         }
         
         ob_start();

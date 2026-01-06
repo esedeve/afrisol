@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Afrisol AJAX Handlers
