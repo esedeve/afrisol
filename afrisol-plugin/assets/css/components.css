@@ -1325,6 +1325,7 @@
     justify-content: center;
     background: var(--afrisol-white);
     border-radius: 50%;
+    border: none;
     box-shadow: var(--shadow-lg);
     cursor: pointer;
     opacity: 0;
@@ -1342,30 +1343,17 @@
 
 .afrisol-scroll-top:hover {
     background: var(--afrisol-primary);
+}
+
+.afrisol-scroll-top:hover i {
     color: var(--afrisol-white);
-}
-
-.afrisol-scroll-top .progress-ring {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: rotate(-90deg);
-}
-
-.afrisol-scroll-top .progress-ring__circle {
-    stroke-dasharray: 138.23;
-    stroke-dashoffset: 138.23;
-    transition: stroke-dashoffset 0.1s linear;
 }
 
 .afrisol-scroll-top i {
     font-size: 1rem;
     color: var(--afrisol-primary);
     transition: color var(--transition-fast);
-}
-
-.afrisol-scroll-top:hover i {
-    color: var(--afrisol-white);
+    z-index: 2;
 }
 
 /* ===== WhatsApp Widget ===== */
@@ -1374,9 +1362,6 @@
     bottom: 30px;
     right: 30px;
     z-index: 999;
-}
-
-.whatsapp-btn {
     width: 60px;
     height: 60px;
     display: flex;
@@ -1388,15 +1373,15 @@
     font-size: 1.75rem;
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     transition: all var(--transition-normal);
-    position: relative;
 }
 
-.whatsapp-btn:hover {
+.afrisol-whatsapp-widget:hover {
     transform: scale(1.1);
     color: var(--afrisol-white);
+    background: #128C7E;
 }
 
-.whatsapp-btn::before {
+.afrisol-whatsapp-widget::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -1418,26 +1403,30 @@
     }
 }
 
-.whatsapp-tooltip {
+/* ===== Scroll to Top with Progress Ring ===== */
+.afrisol-scroll-progress {
     position: absolute;
-    right: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0.5rem 1rem;
-    background: var(--afrisol-black);
-    color: var(--afrisol-white);
-    font-size: 0.875rem;
-    white-space: nowrap;
-    border-radius: var(--radius-md);
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-fast);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
 }
 
-.whatsapp-btn:hover .whatsapp-tooltip {
-    opacity: 1;
-    visibility: visible;
-    right: 75px;
+.afrisol-scroll-progress-bg {
+    fill: none;
+    stroke: var(--afrisol-gray-light);
+    stroke-width: 4;
+}
+
+.afrisol-scroll-progress-bar {
+    fill: none;
+    stroke: var(--afrisol-secondary);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 289;
+    stroke-dashoffset: 289;
+    transition: stroke-dashoffset 0.1s linear;
 }
 
 /* ===== PWA Install Prompt ===== */

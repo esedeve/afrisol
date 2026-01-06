@@ -114,11 +114,11 @@
 
         // Scroll to top button
         initScrollToTop: function() {
-            const scrollBtn = document.getElementById('scrollTopBtn');
+            const scrollBtn = document.getElementById('afrisol-scroll-top');
             if (!scrollBtn) return;
 
-            const progressCircle = scrollBtn.querySelector('.progress-ring__circle');
-            const circumference = 138.23; // 2 * PI * radius (22)
+            const progressBar = scrollBtn.querySelector('.afrisol-scroll-progress-bar');
+            const circumference = 2 * Math.PI * 46; // 2 * PI * radius (46)
 
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset;
@@ -133,9 +133,9 @@
                 }
 
                 // Update progress ring
-                if (progressCircle) {
+                if (progressBar) {
                     const offset = circumference - (scrollPercent * circumference);
-                    progressCircle.style.strokeDashoffset = offset;
+                    progressBar.style.strokeDashoffset = offset;
                 }
             });
 
@@ -149,8 +149,8 @@
 
         // Mobile menu
         initMobileMenu: function() {
-            const menuToggle = document.querySelector('.afrisol-menu-toggle');
-            const nav = document.querySelector('.afrisol-nav');
+            const menuToggle = document.getElementById('afrisol-menu-toggle');
+            const nav = document.getElementById('afrisol-nav');
             if (!menuToggle || !nav) return;
 
             menuToggle.addEventListener('click', function() {
