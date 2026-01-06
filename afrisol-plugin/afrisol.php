@@ -544,7 +544,19 @@ add_action('wp_footer', 'afrisol_pwa_install_prompt');
  * Start session for cart functionality
  */
 function afrisol_start_session() {
-    if (!session_id()) {
+    if (defined('DOING_AJAX') && DOING_AJAX) {
+        return;
+    }
+    
+    if (defined('REST_REQUEST') && REST_REQUEST) {
+        return;
+    }
+    
+    if (php_sapi_name() === 'cli') {
+        return;
+    }
+    
+    if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
         session_start();
     }
 }
@@ -556,6 +568,23 @@ add_action('init', 'afrisol_start_session', 1);
 function afrisol_get_session_id() {
     if (is_user_logged_in()) {
         return 'user_' . get_current_user_id();
+    }
+    
+    // Ensure session is started
+    if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
+        session_start();
+    }
+    
+    // Use cookie-based fallback if session not available
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        if (isset($_COOKIE['afrisol_session'])) {
+            return sanitize_text_field($_COOKIE['afrisol_session']);
+        }
+        $session_id = wp_generate_uuid4();
+        if (!headers_sent()) {
+            setcookie('afrisol_session', $session_id, time() + (86400 * 30), '/');
+        }
+        return $session_id;
     }
     
     if (!isset($_SESSION['afrisol_session_id'])) {
