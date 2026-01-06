@@ -595,9 +595,12 @@ function afrisol_get_session_id() {
 }
 
 /**
- * AJAX handlers
+ * Load AJAX handlers
  */
-require_once AFRISOL_PLUGIN_DIR . 'includes/ajax-handlers.php';
+function afrisol_load_ajax_handlers() {
+    require_once AFRISOL_PLUGIN_DIR . 'includes/ajax-handlers.php';
+}
+add_action('init', 'afrisol_load_ajax_handlers');
 
 /**
  * Add custom rewrite rules
