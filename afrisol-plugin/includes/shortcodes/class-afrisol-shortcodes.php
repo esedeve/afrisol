@@ -28,6 +28,42 @@ class Afrisol_Shortcodes {
         add_shortcode('afrisol_solar_calculator', array($this, 'solar_calculator'));
         add_shortcode('afrisol_quote_form', array($this, 'quote_form'));
         add_shortcode('afrisol_repair_form', array($this, 'repair_form'));
+        
+        // Combined landing page shortcode
+        add_shortcode('afrisol_landing_page', array($this, 'landing_page'));
+    }
+
+    /**
+     * Complete Landing Page - All sections combined
+     */
+    public function landing_page($atts) {
+        ob_start();
+        
+        // Hero Slider
+        echo $this->hero_slider($atts);
+        
+        // Trust Indicators
+        echo $this->trust_indicators($atts);
+        
+        // Services Section
+        echo $this->services_section($atts);
+        
+        // Why Choose Us
+        echo $this->why_choose_section($atts);
+        
+        // Featured Products
+        echo $this->featured_products($atts);
+        
+        // Testimonials
+        echo $this->testimonials($atts);
+        
+        // Map Section
+        echo $this->map_section($atts);
+        
+        // Contact Form
+        echo $this->contact_form($atts);
+        
+        return ob_get_clean();
     }
 
     /**
