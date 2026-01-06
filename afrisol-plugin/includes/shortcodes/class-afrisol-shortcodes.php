@@ -41,7 +41,7 @@ class Afrisol_Shortcodes {
      * Site Header
      */
     public function site_header($atts) {
-        $logo_url = AFRISOL_PLUGIN_URL . 'assets/images/logo.svg';
+        $logo_url = AFRISOL_PLUGIN_URL . 'assets/images/logo.webp';
         $cart_count = 0;
         if (class_exists('Afrisol_Cart')) {
             $cart = new Afrisol_Cart();
@@ -129,7 +129,7 @@ class Afrisol_Shortcodes {
      * Site Footer
      */
     public function site_footer($atts) {
-        $logo_url = AFRISOL_PLUGIN_URL . 'assets/images/logo-white.svg';
+        $logo_url = AFRISOL_PLUGIN_URL . 'assets/images/logo.webp';
         $phone = get_option('afrisol_phone', '+234 XXX XXX XXXX');
         $email = get_option('afrisol_email', 'info@afrisol.com');
         $whatsapp = get_option('afrisol_whatsapp', '+234 XXX XXX XXXX');
