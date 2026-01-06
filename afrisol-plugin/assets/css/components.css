@@ -1,9 +1,10 @@
 /**
  * Afrisol - Component Styles
  * Header, Footer, Widgets, and UI Components
+ * SLEEK DARK THEME
  */
 
-/* ===== Header ===== */
+/* ===== Header - Sleek Glass Design ===== */
 .afrisol-header {
     position: fixed;
     top: 0;
@@ -22,6 +23,7 @@
 .afrisol-header .afrisol-nav-link:hover,
 .afrisol-header .afrisol-nav-link.active {
     color: var(--afrisol-secondary);
+    text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
 }
 
 .afrisol-header .afrisol-menu-toggle span {
@@ -29,24 +31,25 @@
 }
 
 .afrisol-header.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(15, 15, 26, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 152, 0, 0.05);
     padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .afrisol-header.scrolled .afrisol-nav-link {
-    color: var(--afrisol-black);
+    color: var(--afrisol-text);
 }
 
 .afrisol-header.scrolled .afrisol-nav-link:hover,
 .afrisol-header.scrolled .afrisol-nav-link.active {
-    color: var(--afrisol-primary);
+    color: var(--afrisol-secondary);
 }
 
 .afrisol-header.scrolled .afrisol-menu-toggle span {
-    background: var(--afrisol-black);
+    background: var(--afrisol-text);
 }
 
 .afrisol-header-inner {
@@ -66,7 +69,8 @@
 .afrisol-logo img {
     height: 50px;
     width: auto;
-    transition: height var(--transition-normal);
+    transition: all var(--transition-normal);
+    filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.3));
 }
 
 .afrisol-header.scrolled .afrisol-logo img {
@@ -100,13 +104,13 @@
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--afrisol-black);
-    transition: color var(--transition-fast);
+    color: var(--afrisol-text);
+    transition: all var(--transition-fast);
 }
 
 .afrisol-nav-link:hover,
 .afrisol-nav-link.active {
-    color: var(--afrisol-primary);
+    color: var(--afrisol-secondary);
 }
 
 .afrisol-nav-link::after {
@@ -116,9 +120,11 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--afrisol-secondary);
+    background: linear-gradient(90deg, var(--afrisol-secondary), var(--afrisol-primary));
     transform: scaleX(0);
     transition: transform var(--transition-fast);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
 }
 
 .afrisol-nav-link:hover::after,
@@ -126,7 +132,7 @@
     transform: scaleX(1);
 }
 
-/* Dropdown Menu */
+/* Dropdown Menu - Dark Glass */
 .afrisol-nav-item.has-dropdown {
     position: relative;
 }
@@ -135,35 +141,40 @@
     position: absolute;
     top: 100%;
     left: 0;
-    min-width: 220px;
-    background: var(--afrisol-white);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
+    min-width: 240px;
+    background: rgba(15, 15, 26, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl), 0 0 40px rgba(255, 152, 0, 0.05);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
+    transform: translateY(15px);
     transition: all var(--transition-fast);
     padding: var(--spacing-sm) 0;
     z-index: 100;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .afrisol-nav-item.has-dropdown:hover .afrisol-dropdown {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(5px);
 }
 
 .afrisol-dropdown-item {
     display: block;
     padding: var(--spacing-sm) var(--spacing-lg);
-    color: var(--afrisol-gray-dark);
+    color: var(--afrisol-text-muted);
     transition: all var(--transition-fast);
+    border-left: 2px solid transparent;
 }
 
 .afrisol-dropdown-item:hover {
-    background: var(--afrisol-gray-light);
-    color: var(--afrisol-primary);
-    padding-left: calc(var(--spacing-lg) + 5px);
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--afrisol-secondary);
+    padding-left: calc(var(--spacing-lg) + 8px);
+    border-left-color: var(--afrisol-secondary);
 }
 
 /* Header Actions */
@@ -175,20 +186,23 @@
 
 .afrisol-header-icon {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background: var(--afrisol-gray-light);
-    color: var(--afrisol-gray-dark);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--afrisol-text);
     transition: all var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .afrisol-header-icon:hover {
-    background: var(--afrisol-primary);
+    background: linear-gradient(135deg, var(--afrisol-secondary) 0%, var(--afrisol-secondary-light) 100%);
     color: var(--afrisol-white);
+    box-shadow: var(--glow-secondary);
+    transform: translateY(-2px);
 }
 
 .afrisol-header-icon .badge {
@@ -242,7 +256,7 @@
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Mobile Navigation */
+/* Mobile Navigation - Dark Theme */
 @media (max-width: 992px) {
     .afrisol-menu-toggle {
         display: flex;
@@ -252,15 +266,17 @@
         position: fixed;
         top: 0;
         right: -100%;
-        width: 300px;
+        width: 320px;
         height: 100vh;
-        background: var(--afrisol-white);
+        background: rgba(15, 15, 26, 0.98);
+        backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: flex-start;
-        padding: 80px var(--spacing-xl) var(--spacing-xl);
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+        padding: 100px var(--spacing-xl) var(--spacing-xl);
+        box-shadow: -10px 0 50px rgba(0, 0, 0, 0.5);
         transition: right var(--transition-normal);
         overflow-y: auto;
+        border-left: 1px solid rgba(255, 152, 0, 0.1);
     }
     
     .afrisol-nav.active {
@@ -275,17 +291,18 @@
     
     .afrisol-nav-item {
         width: 100%;
-        border-bottom: 1px solid var(--afrisol-gray-light);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
     
     .afrisol-nav-link {
         padding: var(--spacing-md);
         width: 100%;
+        color: var(--afrisol-text);
     }
     
     .afrisol-nav-link:hover {
-        background: linear-gradient(90deg, var(--afrisol-primary) 0%, transparent 100%);
-        color: var(--afrisol-white);
+        background: linear-gradient(90deg, rgba(255, 152, 0, 0.2) 0%, transparent 100%);
+        color: var(--afrisol-secondary);
     }
     
     .afrisol-dropdown {
@@ -295,8 +312,9 @@
         transform: none;
         box-shadow: none;
         display: none;
-        background: var(--afrisol-gray-light);
+        background: rgba(0, 0, 0, 0.3);
         border-radius: 0;
+        border: none;
     }
     
     .afrisol-nav-item.has-dropdown.open .afrisol-dropdown {
@@ -308,15 +326,15 @@
     }
 }
 
-/* ===== Hero Slider ===== */
+/* ===== Hero Slider - Full Width with Placeholder ===== */
 .afrisol-hero {
     position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     height: 100vh;
-    min-height: 600px;
-    max-height: 900px;
+    min-height: 700px;
+    max-height: 1000px;
     overflow: hidden;
 }
 
@@ -348,6 +366,63 @@
     object-fit: cover;
 }
 
+/* Hero placeholder image when no image is set */
+.afrisol-hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(135deg, rgba(15, 15, 26, 0.9) 0%, rgba(27, 94, 32, 0.8) 50%, rgba(15, 15, 26, 0.9) 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g1" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:%231B5E20;stop-opacity:0.3"/><stop offset="100%25" style="stop-color:%23FF9800;stop-opacity:0.2"/></linearGradient></defs><rect fill="url(%23g1)" width="1200" height="800"/><circle cx="200" cy="200" r="150" fill="%231B5E20" opacity="0.1"/><circle cx="1000" cy="600" r="200" fill="%23FF9800" opacity="0.1"/><circle cx="600" cy="400" r="100" fill="%23fff" opacity="0.05"/></svg>');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.afrisol-hero-placeholder-content {
+    text-align: center;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-xl);
+    border: 2px dashed rgba(255, 152, 0, 0.3);
+}
+
+.afrisol-hero-placeholder-content svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+/* Hero placeholder background */
+.afrisol-hero-placeholder-bg {
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 30% 70%, rgba(27, 94, 32, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(255, 152, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(15, 15, 26, 0.9) 0%, var(--afrisol-bg-dark) 100%),
+        linear-gradient(135deg, var(--afrisol-bg-dark) 0%, #1a1a2e 50%, #0d1f12 100%);
+    position: relative;
+}
+
+.afrisol-hero-placeholder-bg::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 152, 0, 0.1) 0%, transparent 70%);
+    animation: hero-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes hero-glow {
+    0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+}
+
 .afrisol-hero-bg::after {
     content: '';
     position: absolute;
@@ -357,85 +432,93 @@
     height: 100%;
     background: linear-gradient(
         135deg,
-        rgba(27, 94, 32, 0.85) 0%,
-        rgba(27, 94, 32, 0.6) 50%,
-        rgba(0, 0, 0, 0.4) 100%
+        rgba(15, 15, 26, 0.95) 0%,
+        rgba(27, 94, 32, 0.7) 40%,
+        rgba(255, 152, 0, 0.2) 70%,
+        rgba(15, 15, 26, 0.9) 100%
     );
 }
 
 .afrisol-hero-content {
     position: relative;
-    max-width: 700px;
+    max-width: 800px;
     color: var(--afrisol-white);
     padding: 0 var(--spacing-xl);
 }
 
 .afrisol-hero-subtitle {
     display: inline-block;
-    padding: var(--spacing-xs) var(--spacing-md);
-    background: rgba(255, 152, 0, 0.9);
-    border-radius: var(--radius-full);
-    font-size: 0.875rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.9) 0%, rgba(255, 183, 77, 0.9) 100%);
+    border-radius: var(--radius-lg);
+    font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: var(--spacing-md);
+    letter-spacing: 2px;
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 4px 20px rgba(255, 152, 0, 0.4);
 }
 
 .afrisol-hero-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: var(--spacing-lg);
     color: var(--afrisol-white);
+    text-shadow: 0 0 40px rgba(255, 152, 0, 0.3);
 }
 
 .afrisol-hero-title .highlight {
     color: var(--afrisol-secondary);
+    text-shadow: 0 0 30px rgba(255, 152, 0, 0.5);
 }
 
 .afrisol-hero-desc {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    margin-bottom: var(--spacing-xl);
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-2xl);
     opacity: 0.9;
-    color: var(--afrisol-white);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
 }
 
 .afrisol-hero-buttons {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
     flex-wrap: wrap;
 }
 
 .afrisol-hero-pagination {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
 }
 
 .afrisol-hero-pagination .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.5);
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.3);
     opacity: 1;
-    margin: 0 5px;
+    margin: 0 6px;
     transition: all var(--transition-fast);
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .afrisol-hero-pagination .swiper-pagination-bullet-active {
-    width: 30px;
-    border-radius: 6px;
-    background: var(--afrisol-secondary);
+    width: 40px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--afrisol-secondary), var(--afrisol-secondary-light));
+    border-color: var(--afrisol-secondary);
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
 }
 
 @media (max-width: 768px) {
     .afrisol-hero {
-        min-height: 500px;
+        min-height: 600px;
         height: auto;
-        padding: 120px 0 60px;
+        padding: 140px 0 80px;
     }
     
     .afrisol-hero-content {
@@ -448,13 +531,16 @@
     }
 }
 
-/* ===== Trust Indicators ===== */
+/* ===== Trust Indicators - Dark Glass ===== */
 .afrisol-trust-section {
-    background: var(--afrisol-white);
+    background: var(--afrisol-bg-card);
     padding: var(--spacing-2xl) 0;
-    margin-top: -50px;
+    margin-top: -60px;
     position: relative;
     z-index: 10;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: none;
 }
 
 .afrisol-trust-grid {
@@ -468,14 +554,17 @@
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-lg);
-    background: var(--afrisol-cream);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: var(--radius-lg);
     transition: all var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .afrisol-trust-item:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    background: rgba(255, 152, 0, 0.05);
+    border-color: rgba(255, 152, 0, 0.2);
 }
 
 .afrisol-trust-icon {
@@ -486,18 +575,20 @@
     justify-content: center;
     background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
     color: var(--afrisol-white);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     font-size: 1.5rem;
+    box-shadow: var(--glow-primary);
 }
 
 .afrisol-trust-content h4 {
     font-size: 1rem;
     margin-bottom: var(--spacing-xs);
+    color: var(--afrisol-white);
 }
 
 .afrisol-trust-content p {
     font-size: 0.875rem;
-    color: var(--afrisol-gray);
+    color: var(--afrisol-text-muted);
     margin: 0;
 }
 
@@ -513,17 +604,18 @@
     }
 }
 
-/* ===== Services Section ===== */
+/* ===== Services Section - Dark Glass ===== */
 .afrisol-services-section {
-    background: var(--afrisol-cream);
+    background: transparent;
+    padding: var(--spacing-3xl) 0;
 }
 
 .afrisol-service-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: var(--afrisol-bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: var(--radius-xl);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: var(--spacing-2xl);
     text-align: center;
     transition: all var(--transition-normal);
@@ -541,6 +633,7 @@
     background: linear-gradient(90deg, var(--afrisol-primary), var(--afrisol-secondary));
     transform: scaleX(0);
     transition: transform var(--transition-normal);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
 .afrisol-service-card:hover::before {
@@ -549,37 +642,43 @@
 
 .afrisol-service-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    background: var(--afrisol-bg-card-hover);
+    border-color: rgba(255, 152, 0, 0.15);
 }
 
 .afrisol-service-icon {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     margin: 0 auto var(--spacing-lg);
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
     color: var(--afrisol-white);
-    border-radius: 50%;
-    font-size: 2rem;
+    border-radius: var(--radius-xl);
+    font-size: 2.2rem;
     transition: all var(--transition-normal);
+    box-shadow: var(--glow-primary);
 }
 
 .afrisol-service-card:hover .afrisol-service-icon {
     background: linear-gradient(135deg, var(--afrisol-secondary) 0%, var(--afrisol-secondary-light) 100%);
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--glow-secondary);
 }
 
 .afrisol-service-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     margin-bottom: var(--spacing-md);
+    color: var(--afrisol-white);
 }
 
 .afrisol-service-card p {
-    font-size: 0.9rem;
-    color: var(--afrisol-gray);
+    font-size: 0.95rem;
+    color: var(--afrisol-text-muted);
     margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
 }
 
 .afrisol-service-features {
@@ -593,19 +692,26 @@
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-xs) 0;
-    font-size: 0.875rem;
-    color: var(--afrisol-gray-dark);
+    font-size: 0.9rem;
+    color: var(--afrisol-text-muted);
 }
 
-.afrisol-service-features li i {
-    color: var(--afrisol-primary);
+.afrisol-service-features li i,
+.afrisol-service-features li svg {
+    color: var(--afrisol-secondary);
+    width: 20px;
+    flex-shrink: 0;
 }
 
-/* ===== Why Choose Us ===== */
+/* ===== Why Choose Us - Dark Theme ===== */
 .afrisol-why-section {
-    background: var(--afrisol-white);
+    background: var(--afrisol-bg-card);
     position: relative;
     overflow: hidden;
+    padding: var(--spacing-3xl) 0;
+    border-radius: var(--radius-xl);
+    margin: var(--spacing-2xl) 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .afrisol-why-grid {
@@ -623,6 +729,7 @@
     position: relative;
     border-radius: var(--radius-xl);
     overflow: hidden;
+    box-shadow: var(--shadow-xl);
 }
 
 .afrisol-why-image-wrapper::before {
@@ -632,9 +739,10 @@
     left: -20px;
     width: 100%;
     height: 100%;
-    background: var(--afrisol-secondary);
+    background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-secondary) 100%);
     border-radius: var(--radius-xl);
     z-index: -1;
+    opacity: 0.3;
 }
 
 .afrisol-why-image img {
@@ -673,8 +781,9 @@
 }
 
 .afrisol-why-content > p {
-    color: var(--afrisol-gray);
+    color: var(--afrisol-text-muted);
     margin-bottom: var(--spacing-xl);
+    line-height: 1.8;
 }
 
 .afrisol-why-list {
@@ -689,27 +798,61 @@
 }
 
 .afrisol-why-item-icon {
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(27, 94, 32, 0.1);
-    color: var(--afrisol-primary);
-    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(27, 94, 32, 0.2) 0%, rgba(255, 152, 0, 0.1) 100%);
+    color: var(--afrisol-secondary);
+    border-radius: var(--radius-lg);
     font-size: 1.25rem;
+    border: 1px solid rgba(255, 152, 0, 0.2);
+    transition: all var(--transition-normal);
+}
+
+.afrisol-why-item:hover .afrisol-why-item-icon {
+    background: linear-gradient(135deg, var(--afrisol-secondary) 0%, var(--afrisol-secondary-light) 100%);
+    color: var(--afrisol-white);
+    box-shadow: var(--glow-secondary);
 }
 
 .afrisol-why-item-content h4 {
     font-size: 1.1rem;
     margin-bottom: var(--spacing-xs);
+    color: var(--afrisol-white);
 }
 
 .afrisol-why-item-content p {
     font-size: 0.9rem;
-    color: var(--afrisol-gray);
+    color: var(--afrisol-text-muted);
     margin: 0;
+}
+
+/* Image Placeholder for sections without images */
+.afrisol-image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, var(--afrisol-bg-card) 0%, rgba(27, 94, 32, 0.3) 50%, var(--afrisol-bg-card) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xl);
+    border: 2px dashed rgba(255, 152, 0, 0.3);
+    color: var(--afrisol-text-muted);
+}
+
+.afrisol-image-placeholder svg {
+    color: var(--afrisol-secondary);
+    opacity: 0.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-image-placeholder span {
+    font-size: 1rem;
+    opacity: 0.7;
 }
 
 @media (max-width: 992px) {
@@ -722,22 +865,26 @@
     }
 }
 
-/* ===== Featured Products ===== */
+/* ===== Featured Products - Dark Theme ===== */
 .afrisol-products-section {
-    background: var(--afrisol-cream);
+    background: transparent;
+    padding: var(--spacing-3xl) 0;
 }
 
 .afrisol-product-card {
-    background: var(--afrisol-white);
-    border-radius: var(--radius-lg);
+    background: var(--afrisol-bg-card);
+    border-radius: var(--radius-xl);
     overflow: hidden;
     transition: all var(--transition-normal);
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .afrisol-product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    background: var(--afrisol-bg-card-hover);
+    border-color: rgba(255, 152, 0, 0.15);
 }
 
 .afrisol-product-badges {
@@ -1182,19 +1329,36 @@
 }
 
 /* ===== Footer ===== */
+/* ===== Footer - Full Width Dark Glass ===== */
 .afrisol-footer {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
-    background: var(--afrisol-black);
+    background: linear-gradient(180deg, var(--afrisol-bg-card) 0%, var(--afrisol-bg-dark) 100%);
     color: var(--afrisol-white);
     padding-top: var(--spacing-3xl);
+    border-top: 1px solid rgba(255, 152, 0, 0.1);
+    position: relative;
+}
+
+.afrisol-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 10% 90%, rgba(27, 94, 32, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 10%, rgba(255, 152, 0, 0.08) 0%, transparent 40%);
+    pointer-events: none;
 }
 
 .afrisol-footer > .afrisol-container {
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 var(--container-padding);
+    position: relative;
 }
 
 .afrisol-footer-grid {
@@ -1202,17 +1366,19 @@
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
     gap: var(--spacing-2xl);
     padding-bottom: var(--spacing-2xl);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .afrisol-footer-logo {
     max-width: 150px;
     margin-bottom: var(--spacing-lg);
+    filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.3));
 }
 
 .afrisol-footer-about p {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--afrisol-text-muted);
     margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
 }
 
 .afrisol-footer-social {
@@ -1221,21 +1387,23 @@
 }
 
 .afrisol-social-link {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--afrisol-white);
-    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--afrisol-text);
+    border-radius: var(--radius-lg);
     transition: all var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .afrisol-social-link:hover {
-    background: var(--afrisol-secondary);
+    background: linear-gradient(135deg, var(--afrisol-secondary) 0%, var(--afrisol-secondary-light) 100%);
     color: var(--afrisol-white);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: var(--glow-secondary);
 }
 
 .afrisol-footer-title {
@@ -1251,9 +1419,11 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 40px;
-    height: 2px;
-    background: var(--afrisol-secondary);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--afrisol-secondary), var(--afrisol-primary));
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
 }
 
 .afrisol-footer-links {
@@ -1265,7 +1435,7 @@
 }
 
 .afrisol-footer-links a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--afrisol-text-muted);
     transition: all var(--transition-fast);
     display: inline-flex;
     align-items: center;
@@ -1273,16 +1443,20 @@
 }
 
 .afrisol-footer-links a::before {
-    content: '\f054';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    font-size: 0.625rem;
+    content: '→';
+    font-size: 0.75rem;
     color: var(--afrisol-secondary);
+    transition: transform var(--transition-fast);
 }
 
 .afrisol-footer-links a:hover {
     color: var(--afrisol-secondary);
-    padding-left: 5px;
+    padding-left: 8px;
+    text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+}
+
+.afrisol-footer-links a:hover::before {
+    transform: translateX(3px);
 }
 
 .afrisol-footer-contact {
@@ -1295,18 +1469,21 @@
     margin-bottom: var(--spacing-md);
 }
 
-.afrisol-footer-contact i {
+.afrisol-footer-contact i,
+.afrisol-footer-contact svg {
     color: var(--afrisol-secondary);
     width: 20px;
+    flex-shrink: 0;
 }
 
 .afrisol-footer-contact span,
 .afrisol-footer-contact a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--afrisol-text-muted);
 }
 
 .afrisol-footer-contact a:hover {
     color: var(--afrisol-secondary);
+    text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
 }
 
 .afrisol-footer-bottom {
@@ -1319,7 +1496,7 @@
 }
 
 .afrisol-copyright {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--afrisol-text-muted);
     font-size: 0.875rem;
 }
 
@@ -1329,7 +1506,7 @@
 }
 
 .afrisol-footer-bottom-links a {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--afrisol-text-muted);
     font-size: 0.875rem;
 }
 
@@ -1354,19 +1531,19 @@
     }
 }
 
-/* ===== Scroll to Top ===== */
+/* ===== Scroll to Top - Glass Style ===== */
 .afrisol-scroll-top {
     position: fixed;
     bottom: 30px;
     left: 30px;
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--afrisol-white);
-    border-radius: 50%;
-    border: none;
+    background: var(--afrisol-bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: var(--shadow-lg);
     cursor: pointer;
     opacity: 0;
@@ -1383,21 +1560,25 @@
 }
 
 .afrisol-scroll-top:hover {
-    background: var(--afrisol-primary);
+    background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
+    box-shadow: var(--glow-primary);
+    transform: translateY(-3px);
 }
 
-.afrisol-scroll-top:hover i {
+.afrisol-scroll-top:hover i,
+.afrisol-scroll-top:hover svg {
     color: var(--afrisol-white);
 }
 
-.afrisol-scroll-top i {
-    font-size: 1rem;
-    color: var(--afrisol-primary);
+.afrisol-scroll-top i,
+.afrisol-scroll-top svg {
+    font-size: 1.1rem;
+    color: var(--afrisol-secondary);
     transition: color var(--transition-fast);
     z-index: 2;
 }
 
-/* ===== WhatsApp Widget ===== */
+/* ===== WhatsApp Widget - Enhanced ===== */
 .afrisol-whatsapp-widget {
     position: fixed;
     bottom: 30px;
@@ -1408,18 +1589,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #25D366;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: var(--afrisol-white);
-    border-radius: 50%;
+    border-radius: var(--radius-xl);
     font-size: 1.75rem;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 4px 25px rgba(37, 211, 102, 0.5);
     transition: all var(--transition-normal);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .afrisol-whatsapp-widget:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) translateY(-3px);
     color: var(--afrisol-white);
-    background: #128C7E;
+    box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
 }
 
 .afrisol-whatsapp-widget::before {
@@ -1427,7 +1609,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: var(--radius-xl);
     background: #25D366;
     animation: pulse-whatsapp 2s ease-out infinite;
     z-index: -1;
@@ -1436,10 +1618,10 @@
 @keyframes pulse-whatsapp {
     0% {
         transform: scale(1);
-        opacity: 1;
+        opacity: 0.7;
     }
     100% {
-        transform: scale(1.5);
+        transform: scale(1.6);
         opacity: 0;
     }
 }
@@ -1456,7 +1638,7 @@
 
 .afrisol-scroll-progress-bg {
     fill: none;
-    stroke: var(--afrisol-gray-light);
+    stroke: rgba(255, 255, 255, 0.1);
     stroke-width: 4;
 }
 

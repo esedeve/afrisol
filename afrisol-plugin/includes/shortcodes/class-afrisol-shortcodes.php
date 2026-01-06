@@ -268,7 +268,7 @@ class Afrisol_Shortcodes {
     }
 
     /**
-     * Hero Slider
+     * Hero Slider - With SVG Icons
      */
     public function hero_slider($atts) {
         $slides = get_posts(array(
@@ -295,7 +295,7 @@ class Afrisol_Shortcodes {
                                     <?php if (has_post_thumbnail($slide->ID)) : ?>
                                         <?php echo get_the_post_thumbnail($slide->ID, 'full'); ?>
                                     <?php else : ?>
-                                        <div style="background: linear-gradient(135deg, #1B5E20, #2E7D32); width: 100%; height: 100%;"></div>
+                                        <div class="afrisol-hero-placeholder-bg"></div>
                                     <?php endif; ?>
                                 </div>
                                 <div class="afrisol-container">
@@ -305,11 +305,13 @@ class Afrisol_Shortcodes {
                                         <?php endif; ?>
                                         <h1 class="afrisol-hero-title afrisol-sparkle-text"><?php echo esc_html($slide->post_title); ?></h1>
                                         <div class="afrisol-hero-buttons">
-                                            <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary">
-                                                <i class="fas fa-file-invoice"></i> Get Free Quote
+                                            <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-lg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                                                Get Free Quote
                                             </a>
-                                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-outline-white">
-                                                <i class="fas fa-shopping-bag"></i> Shop Products
+                                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-outline-white afrisol-btn-lg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                                Shop Products
                                             </a>
                                         </div>
                                     </div>
@@ -318,19 +320,21 @@ class Afrisol_Shortcodes {
                         <?php endforeach; else : ?>
                             <div class="swiper-slide afrisol-hero-slide">
                                 <div class="afrisol-hero-bg">
-                                    <div style="background: linear-gradient(135deg, #1B5E20, #2E7D32); width: 100%; height: 100%;"></div>
+                                    <div class="afrisol-hero-placeholder-bg"></div>
                                 </div>
                                 <div class="afrisol-container">
                                     <div class="afrisol-hero-content">
-                                        <span class="afrisol-hero-subtitle">Solar Solutions for Africa</span>
+                                        <span class="afrisol-hero-subtitle">☀️ Solar Solutions for Africa</span>
                                         <h1 class="afrisol-hero-title afrisol-sparkle-text">Power Your Future with <span class="highlight">Clean Energy</span></h1>
                                         <p class="afrisol-hero-desc">Reliable solar power systems, security solutions, and electric mobility for homes and businesses across Africa.</p>
                                         <div class="afrisol-hero-buttons">
-                                            <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary">
-                                                <i class="fas fa-file-invoice"></i> Get Free Quote
+                                            <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-lg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                                                Get Free Quote
                                             </a>
-                                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-outline-white">
-                                                <i class="fas fa-shopping-bag"></i> Shop Products
+                                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-outline-white afrisol-btn-lg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                                Shop Products
                                             </a>
                                         </div>
                                     </div>
@@ -347,7 +351,7 @@ class Afrisol_Shortcodes {
     }
 
     /**
-     * Trust Indicators
+     * Trust Indicators - With SVG Icons
      */
     public function trust_indicators($atts) {
         ob_start();
@@ -357,7 +361,7 @@ class Afrisol_Shortcodes {
                 <div class="afrisol-trust-grid">
                     <div class="afrisol-trust-item">
                         <div class="afrisol-trust-icon">
-                            <i class="fas fa-truck"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="4" rx="2"/><path d="M2 10h20"/><path d="M6 14h.01"/><path d="M10 14h.01"/></svg>
                         </div>
                         <div class="afrisol-trust-content">
                             <h4>Fast Delivery</h4>
@@ -366,7 +370,7 @@ class Afrisol_Shortcodes {
                     </div>
                     <div class="afrisol-trust-item">
                         <div class="afrisol-trust-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
                         </div>
                         <div class="afrisol-trust-content">
                             <h4>Warranty Protection</h4>
@@ -375,7 +379,7 @@ class Afrisol_Shortcodes {
                     </div>
                     <div class="afrisol-trust-item">
                         <div class="afrisol-trust-icon">
-                            <i class="fas fa-wrench"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                         </div>
                         <div class="afrisol-trust-content">
                             <h4>Expert Installation</h4>
@@ -384,7 +388,7 @@ class Afrisol_Shortcodes {
                     </div>
                     <div class="afrisol-trust-item">
                         <div class="afrisol-trust-icon">
-                            <i class="fas fa-headset"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         </div>
                         <div class="afrisol-trust-content">
                             <h4>24/7 Support</h4>
@@ -399,7 +403,7 @@ class Afrisol_Shortcodes {
     }
 
     /**
-     * Services Section
+     * Services Section - With SVG Icons
      */
     public function services_section($atts) {
         $atts = shortcode_atts(array(
@@ -418,47 +422,47 @@ class Afrisol_Shortcodes {
                 <div class="afrisol-grid afrisol-grid-3">
                     <div class="afrisol-service-card">
                         <div class="afrisol-service-icon">
-                            <i class="fas fa-solar-panel"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
                         </div>
                         <h3>Solar Energy Solutions</h3>
                         <p>Complete solar power systems including panels, inverters, and batteries for homes and businesses.</p>
                         <ul class="afrisol-service-features">
-                            <li><i class="fas fa-check"></i> Solar Panels Installation</li>
-                            <li><i class="fas fa-check"></i> Inverter Systems</li>
-                            <li><i class="fas fa-check"></i> Battery Storage</li>
-                            <li><i class="fas fa-check"></i> Complete Solar Kits</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Solar Panels Installation</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Inverter Systems</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Battery Storage</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Complete Solar Kits</li>
                         </ul>
-                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">Learn More</a>
                     </div>
                     
                     <div class="afrisol-service-card">
                         <div class="afrisol-service-icon">
-                            <i class="fas fa-video"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
                         </div>
                         <h3>Security & Surveillance</h3>
                         <p>Advanced security systems to protect your property with cutting-edge technology.</p>
                         <ul class="afrisol-service-features">
-                            <li><i class="fas fa-check"></i> CCTV Cameras</li>
-                            <li><i class="fas fa-check"></i> AI-Powered Cameras</li>
-                            <li><i class="fas fa-check"></i> Access Control Systems</li>
-                            <li><i class="fas fa-check"></i> Electric Fence & Alarms</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> CCTV Cameras</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> AI-Powered Cameras</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Access Control Systems</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Electric Fence & Alarms</li>
                         </ul>
-                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">Learn More</a>
                     </div>
                     
                     <div class="afrisol-service-card">
                         <div class="afrisol-service-icon">
-                            <i class="fas fa-bicycle"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
                         </div>
                         <h3>Solar Mobility</h3>
                         <p>Eco-friendly electric vehicles powered by clean energy for sustainable transportation.</p>
                         <ul class="afrisol-service-features">
-                            <li><i class="fas fa-check"></i> Electric Scooters</li>
-                            <li><i class="fas fa-check"></i> Electric Bikes</li>
-                            <li><i class="fas fa-check"></i> Tricycles</li>
-                            <li><i class="fas fa-check"></i> Electric Vehicles</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Electric Scooters</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Electric Bikes</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Tricycles</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Electric Vehicles</li>
                         </ul>
-                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -468,7 +472,7 @@ class Afrisol_Shortcodes {
     }
 
     /**
-     * Why Choose Us Section
+     * Why Choose Us Section - With SVG Icons
      */
     public function why_choose_section($atts) {
         ob_start();
@@ -478,8 +482,10 @@ class Afrisol_Shortcodes {
                 <div class="afrisol-why-grid">
                     <div class="afrisol-why-image">
                         <div class="afrisol-why-image-wrapper">
-                            <img src="<?php echo esc_url(AFRISOL_PLUGIN_URL); ?>assets/images/why-choose.jpg" alt="Why Choose Afrisol" 
-                                 onerror="this.style.background='linear-gradient(135deg, #1B5E20, #2E7D32)'; this.style.display='block'; this.style.height='400px';">
+                            <div class="afrisol-image-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                                <span>Solar Energy</span>
+                            </div>
                         </div>
                         <div class="afrisol-why-stats">
                             <div class="afrisol-why-stats-number">500+</div>
@@ -494,7 +500,7 @@ class Afrisol_Shortcodes {
                         <ul class="afrisol-why-list">
                             <li class="afrisol-why-item">
                                 <div class="afrisol-why-item-icon">
-                                    <i class="fas fa-award"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
                                 </div>
                                 <div class="afrisol-why-item-content">
                                     <h4>Quality Products</h4>
@@ -503,7 +509,7 @@ class Afrisol_Shortcodes {
                             </li>
                             <li class="afrisol-why-item">
                                 <div class="afrisol-why-item-icon">
-                                    <i class="fas fa-user-tie"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                                 </div>
                                 <div class="afrisol-why-item-content">
                                     <h4>Expert Team</h4>
@@ -512,7 +518,7 @@ class Afrisol_Shortcodes {
                             </li>
                             <li class="afrisol-why-item">
                                 <div class="afrisol-why-item-icon">
-                                    <i class="fas fa-money-bill-wave"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                                 </div>
                                 <div class="afrisol-why-item-content">
                                     <h4>Affordable Financing</h4>
