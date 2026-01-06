@@ -281,6 +281,9 @@ function afrisol_load_classes() {
     // Shortcodes
     require_once AFRISOL_PLUGIN_DIR . 'includes/shortcodes/class-afrisol-shortcodes.php';
     
+    // Widgets
+    require_once AFRISOL_PLUGIN_DIR . 'includes/widgets/class-afrisol-widgets.php';
+    
     // API
     require_once AFRISOL_PLUGIN_DIR . 'includes/api/class-afrisol-api.php';
     
@@ -566,6 +569,7 @@ function afrisol_rewrite_rules() {
     add_rewrite_rule('^about/?$', 'index.php?afrisol_page=about', 'top');
     add_rewrite_rule('^contact/?$', 'index.php?afrisol_page=contact', 'top');
     add_rewrite_rule('^blog/?$', 'index.php?afrisol_page=blog', 'top');
+    add_rewrite_rule('^order-confirmation/?$', 'index.php?afrisol_page=order-confirmation', 'top');
 }
 add_action('init', 'afrisol_rewrite_rules');
 
