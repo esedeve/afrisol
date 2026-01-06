@@ -27,6 +27,9 @@ define('AFRISOL_PLUGIN_BASENAME', plugin_basename(__FILE__));
  * Plugin activation
  */
 function afrisol_activate() {
+    // Suppress any output during activation
+    ob_start();
+    
     // Create custom database tables
     afrisol_create_tables();
     
@@ -39,6 +42,9 @@ function afrisol_activate() {
     
     // Set default options
     afrisol_set_default_options();
+    
+    // Clean output buffer
+    ob_end_clean();
 }
 register_activation_hook(__FILE__, 'afrisol_activate');
 
