@@ -17,7 +17,7 @@ $total = $cart->get_total();
 <div class="afrisol-cart-page">
     <div class="afrisol-container">
         <div class="afrisol-breadcrumb">
-            <a href="<?php echo home_url(); ?>">Home</a>
+            <a href="<?php echo esc_url(home_url()); ?>">Home</a>
             <span class="afrisol-breadcrumb-separator">/</span>
             <span class="afrisol-breadcrumb-current">Shopping Cart</span>
         </div>
@@ -86,7 +86,7 @@ $total = $cart->get_total();
                 <?php endforeach; ?>
                 
                 <div class="afrisol-cart-actions">
-                    <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-outline">
+                    <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-outline">
                         <i class="fas fa-arrow-left"></i> Continue Shopping
                     </a>
                     <button class="afrisol-btn afrisol-btn-outline" onclick="window.location.reload()">
@@ -129,7 +129,7 @@ $total = $cart->get_total();
                     <button type="submit" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Apply</button>
                 </form>
                 
-                <a href="<?php echo home_url('/checkout'); ?>" class="afrisol-btn afrisol-btn-primary afrisol-checkout-btn">
+                <a href="<?php echo esc_url(home_url('/checkout')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-checkout-btn">
                     <i class="fas fa-lock"></i> Proceed to Checkout
                 </a>
                 
@@ -204,7 +204,7 @@ $total = $cart->get_total();
             <i class="fas fa-shopping-cart" style="font-size: 5rem; color: #ddd; margin-bottom: 1.5rem;"></i>
             <h2>Your cart is empty</h2>
             <p style="color: #666; margin-bottom: 2rem;">Looks like you haven't added any products to your cart yet.</p>
-            <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-lg">
+            <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-lg">
                 <i class="fas fa-shopping-bag"></i> Start Shopping
             </a>
         </div>

@@ -131,10 +131,10 @@ $order = $orders->get_by_number($order_number);
             </div>
             
             <div class="confirmation-actions">
-                <a href="<?php echo home_url('/my-account?tab=orders'); ?>" class="afrisol-btn afrisol-btn-primary">
+                <a href="<?php echo esc_url(home_url('/my-account?tab=orders')); ?>" class="afrisol-btn afrisol-btn-primary">
                     <i class="fas fa-receipt"></i> View Order Details
                 </a>
-                <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-outline">
+                <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-outline">
                     <i class="fas fa-shopping-bag"></i> Continue Shopping
                 </a>
             </div>
@@ -160,7 +160,7 @@ $order = $orders->get_by_number($order_number);
             <i class="fas fa-exclamation-triangle"></i>
             <h2>Order Not Found</h2>
             <p>We couldn't find an order with that number. Please check your order number and try again.</p>
-            <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-primary">Browse Products</a>
+            <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-primary">Browse Products</a>
         </div>
         <?php endif; ?>
     </div>

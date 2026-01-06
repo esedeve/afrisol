@@ -11,9 +11,9 @@ if (!defined('ABSPATH')) {
 <div class="afrisol-repair-page afrisol-quote-page">
     <div class="afrisol-container">
         <div class="afrisol-breadcrumb">
-            <a href="<?php echo home_url(); ?>">Home</a>
+            <a href="<?php echo esc_url(home_url()); ?>">Home</a>
             <span class="afrisol-breadcrumb-separator">/</span>
-            <a href="<?php echo home_url('/services'); ?>">Services</a>
+            <a href="<?php echo esc_url(home_url('/services')); ?>">Services</a>
             <span class="afrisol-breadcrumb-separator">/</span>
             <span class="afrisol-breadcrumb-current">Book Repair</span>
         </div>

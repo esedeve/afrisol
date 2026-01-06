@@ -25,9 +25,9 @@ $current_user = wp_get_current_user();
 <div class="afrisol-checkout-page">
     <div class="afrisol-container">
         <div class="afrisol-breadcrumb">
-            <a href="<?php echo home_url(); ?>">Home</a>
+            <a href="<?php echo esc_url(home_url()); ?>">Home</a>
             <span class="afrisol-breadcrumb-separator">/</span>
-            <a href="<?php echo home_url('/cart'); ?>">Cart</a>
+            <a href="<?php echo esc_url(home_url('/cart')); ?>">Cart</a>
             <span class="afrisol-breadcrumb-separator">/</span>
             <span class="afrisol-breadcrumb-current">Checkout</span>
         </div>

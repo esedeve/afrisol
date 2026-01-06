@@ -50,7 +50,7 @@ $featured = get_posts(array(
             <h1 class="afrisol-sparkle-text">Resources & Blog</h1>
             <p>Expert tips, guides, and industry news on solar energy and security</p>
             <div class="afrisol-breadcrumb">
-                <a href="<?php echo home_url(); ?>">Home</a>
+                <a href="<?php echo esc_url(home_url()); ?>">Home</a>
                 <span class="afrisol-breadcrumb-separator">/</span>
                 <span class="afrisol-breadcrumb-current">Blog</span>
             </div>
@@ -108,7 +108,7 @@ $featured = get_posts(array(
                         <?php elseif ($category) : ?>
                             <h2>Category: <?php echo esc_html(ucwords(str_replace('-', ' ', $category))); ?></h2>
                         <?php endif; ?>
-                        <a href="<?php echo home_url('/blog'); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">
+                        <a href="<?php echo esc_url(home_url('/blog')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">
                             <i class="fas fa-times"></i> Clear Filter
                         </a>
                     </div>
@@ -164,7 +164,7 @@ $featured = get_posts(array(
                         <i class="fas fa-search"></i>
                         <h3>No articles found</h3>
                         <p>Try adjusting your search or browse our categories.</p>
-                        <a href="<?php echo home_url('/blog'); ?>" class="afrisol-btn afrisol-btn-primary">View All Articles</a>
+                        <a href="<?php echo esc_url(home_url('/blog')); ?>" class="afrisol-btn afrisol-btn-primary">View All Articles</a>
                     </div>
                     <?php endif; ?>
                 </main>
@@ -187,7 +187,7 @@ $featured = get_posts(array(
                         <h4>Categories</h4>
                         <ul class="afrisol-category-list">
                             <li class="<?php echo !$category ? 'active' : ''; ?>">
-                                <a href="<?php echo home_url('/blog'); ?>">All Articles</a>
+                                <a href="<?php echo esc_url(home_url('/blog')); ?>">All Articles</a>
                             </li>
                             <?php foreach ($categories as $cat) : ?>
                             <li class="<?php echo $category === $cat->slug ? 'active' : ''; ?>">
@@ -232,7 +232,7 @@ $featured = get_posts(array(
                     <div class="afrisol-sidebar-widget cta-widget">
                         <h4>Ready to Go Solar?</h4>
                         <p>Get a free quote and start saving on your energy bills today.</p>
-                        <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-block">
+                        <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-block">
                             <i class="fas fa-file-invoice"></i> Get Free Quote
                         </a>
                     </div>

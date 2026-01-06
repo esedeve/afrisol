@@ -79,7 +79,7 @@ $brands = get_terms(array(
             <h1>Our Products</h1>
             <p>Quality solar power systems, security solutions, and electric mobility</p>
             <div class="afrisol-breadcrumb">
-                <a href="<?php echo home_url(); ?>">Home</a>
+                <a href="<?php echo esc_url(home_url()); ?>">Home</a>
                 <span class="afrisol-breadcrumb-separator">/</span>
                 <span class="afrisol-breadcrumb-current">Products</span>
             </div>
@@ -305,7 +305,7 @@ $brands = get_terms(array(
                             <div class="afrisol-no-products" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
                                 <i class="fas fa-box-open" style="font-size: 4rem; color: #ddd; margin-bottom: 1rem;"></i>
                                 <p>No products found matching your criteria.</p>
-                                <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-primary">View All Products</a>
+                                <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-primary">View All Products</a>
                             </div>
                         <?php endif; wp_reset_postdata(); ?>
                     </div>

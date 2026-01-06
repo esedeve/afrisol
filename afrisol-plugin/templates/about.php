@@ -222,10 +222,10 @@ $team_members = get_posts(array(
                     <h2>Ready to Go Solar?</h2>
                     <p>Join thousands of satisfied customers powering their homes with clean energy</p>
                     <div class="afrisol-cta-buttons">
-                        <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-lg">
+                        <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-lg">
                             <i class="fas fa-file-invoice"></i> Get Free Quote
                         </a>
-                        <a href="<?php echo home_url('/contact'); ?>" class="afrisol-btn afrisol-btn-outline-white afrisol-btn-lg">
+                        <a href="<?php echo esc_url(home_url('/contact')); ?>" class="afrisol-btn afrisol-btn-outline-white afrisol-btn-lg">
                             <i class="fas fa-phone-alt"></i> Contact Us
                         </a>
                     </div>

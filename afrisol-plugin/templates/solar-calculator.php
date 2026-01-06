@@ -13,7 +13,7 @@ get_header();
 <div class="afrisol-calculator-page">
     <div class="afrisol-container">
         <div class="afrisol-breadcrumb">
-            <a href="<?php echo home_url(); ?>">Home</a>
+            <a href="<?php echo esc_url(home_url()); ?>">Home</a>
             <span class="afrisol-breadcrumb-separator">/</span>
             <span class="afrisol-breadcrumb-current">Solar Calculator</span>
         </div>

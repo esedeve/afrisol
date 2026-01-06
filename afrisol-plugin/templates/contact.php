@@ -30,7 +30,7 @@ $faqs = get_posts(array(
             <h1 class="afrisol-sparkle-text">Contact Us</h1>
             <p>We're here to help you power your future with clean energy</p>
             <div class="afrisol-breadcrumb">
-                <a href="<?php echo home_url(); ?>">Home</a>
+                <a href="<?php echo esc_url(home_url()); ?>">Home</a>
                 <span class="afrisol-breadcrumb-separator">/</span>
                 <span class="afrisol-breadcrumb-current">Contact</span>
             </div>
@@ -222,7 +222,7 @@ $faqs = get_posts(array(
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="afrisol-faq-answer">
-                            <p>Use our <a href="<?php echo home_url('/solar-calculator'); ?>">Solar Calculator</a> for an estimate, or schedule a free site assessment for expert recommendations.</p>
+                            <p>Use our <a href="<?php echo esc_url(home_url('/solar-calculator')); ?>">Solar Calculator</a> for an estimate, or schedule a free site assessment for expert recommendations.</p>
                         </div>
                     </div>
                     <div class="afrisol-faq-item">
@@ -231,7 +231,7 @@ $faqs = get_posts(array(
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="afrisol-faq-answer">
-                            <p>Yes, we offer regular maintenance packages and on-demand repair services for all our products. Book a repair <a href="<?php echo home_url('/book-repair'); ?>">here</a>.</p>
+                            <p>Yes, we offer regular maintenance packages and on-demand repair services for all our products. Book a repair <a href="<?php echo esc_url(home_url('/book-repair')); ?>">here</a>.</p>
                         </div>
                     </div>
                     <?php endif; ?>
@@ -242,19 +242,19 @@ $faqs = get_posts(array(
             <section class="afrisol-quick-links afrisol-mt-4">
                 <h3>Quick Links</h3>
                 <div class="quick-links-grid">
-                    <a href="<?php echo home_url('/get-quote'); ?>" class="quick-link-card">
+                    <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="quick-link-card">
                         <i class="fas fa-file-invoice"></i>
                         <span>Get Free Quote</span>
                     </a>
-                    <a href="<?php echo home_url('/solar-calculator'); ?>" class="quick-link-card">
+                    <a href="<?php echo esc_url(home_url('/solar-calculator')); ?>" class="quick-link-card">
                         <i class="fas fa-calculator"></i>
                         <span>Solar Calculator</span>
                     </a>
-                    <a href="<?php echo home_url('/book-repair'); ?>" class="quick-link-card">
+                    <a href="<?php echo esc_url(home_url('/book-repair')); ?>" class="quick-link-card">
                         <i class="fas fa-tools"></i>
                         <span>Book Repair</span>
                     </a>
-                    <a href="<?php echo home_url('/products'); ?>" class="quick-link-card">
+                    <a href="<?php echo esc_url(home_url('/products')); ?>" class="quick-link-card">
                         <i class="fas fa-shopping-bag"></i>
                         <span>Shop Products</span>
                     </a>

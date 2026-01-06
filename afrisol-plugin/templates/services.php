@@ -29,7 +29,7 @@ $services = get_posts(array(
             <h1 class="afrisol-sparkle-text">Our Services</h1>
             <p>Professional solar, security, and maintenance solutions for homes and businesses</p>
             <div class="afrisol-breadcrumb">
-                <a href="<?php echo home_url(); ?>">Home</a>
+                <a href="<?php echo esc_url(home_url()); ?>">Home</a>
                 <span class="afrisol-breadcrumb-separator">/</span>
                 <span class="afrisol-breadcrumb-current">Services</span>
             </div>
@@ -74,7 +74,7 @@ $services = get_posts(array(
                                 <li><i class="fas fa-check"></i> CCTV Maintenance</li>
                                 <li><i class="fas fa-check"></i> Electric Vehicle Servicing</li>
                             </ul>
-                            <a href="<?php echo home_url('/book-repair'); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-sm">Book Repair</a>
+                            <a href="<?php echo esc_url(home_url('/book-repair')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-sm">Book Repair</a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@ $services = get_posts(array(
                                 </div>
                             </div>
                             
-                            <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-btn afrisol-btn-primary">Get Custom Quote</a>
+                            <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-primary">Get Custom Quote</a>
                         </div>
                     </div>
                     
@@ -166,7 +166,7 @@ $services = get_posts(array(
                                 </div>
                             </div>
                             
-                            <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-btn afrisol-btn-primary">Request Consultation</a>
+                            <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-primary">Request Consultation</a>
                         </div>
                     </div>
                     
@@ -203,7 +203,7 @@ $services = get_posts(array(
                                 </div>
                             </div>
                             
-                            <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-btn afrisol-btn-primary">Get Security Quote</a>
+                            <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-primary">Get Security Quote</a>
                         </div>
                     </div>
                     
@@ -239,7 +239,7 @@ $services = get_posts(array(
                                 </div>
                             </div>
                             
-                            <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-btn afrisol-btn-primary">Get Quote</a>
+                            <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-primary">Get Quote</a>
                         </div>
                     </div>
                 </div>
@@ -272,10 +272,10 @@ $services = get_posts(array(
                     <h2>Ready to Get Started?</h2>
                     <p>Contact us today for a free consultation and quote</p>
                     <div class="afrisol-cta-buttons">
-                        <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-lg">
+                        <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-lg">
                             <i class="fas fa-file-invoice"></i> Get Free Quote
                         </a>
-                        <a href="<?php echo home_url('/solar-calculator'); ?>" class="afrisol-btn afrisol-btn-outline-white afrisol-btn-lg">
+                        <a href="<?php echo esc_url(home_url('/solar-calculator')); ?>" class="afrisol-btn afrisol-btn-outline-white afrisol-btn-lg">
                             <i class="fas fa-calculator"></i> Solar Calculator
                         </a>
                     </div>

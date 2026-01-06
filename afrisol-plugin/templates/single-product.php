@@ -51,9 +51,9 @@ get_header();
 <div class="afrisol-single-product">
     <div class="afrisol-container">
         <div class="afrisol-breadcrumb">
-            <a href="<?php echo home_url(); ?>">Home</a>
+            <a href="<?php echo esc_url(home_url()); ?>">Home</a>
             <span class="afrisol-breadcrumb-separator">/</span>
-            <a href="<?php echo home_url('/products'); ?>">Products</a>
+            <a href="<?php echo esc_url(home_url('/products')); ?>">Products</a>
             <span class="afrisol-breadcrumb-separator">/</span>
             <?php if ($categories) : ?>
                 <a href="<?php echo get_term_link($categories[0]); ?>"><?php echo esc_html($categories[0]->name); ?></a>
@@ -175,7 +175,7 @@ get_header();
                         </button>
                     </div>
                     
-                    <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-block">
+                    <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-block">
                         <i class="fas fa-tools"></i> Request Installation Quote
                     </a>
                 </div>

@@ -93,7 +93,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboa
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo wp_logout_url(home_url()); ?>">
+                            <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
@@ -180,7 +180,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboa
                     <div class="afrisol-empty-state">
                         <i class="fas fa-shopping-bag"></i>
                         <p>No orders yet</p>
-                        <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">Start Shopping</a>
+                        <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">Start Shopping</a>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -189,19 +189,19 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboa
                 <div class="afrisol-quick-actions">
                     <h3>Quick Actions</h3>
                     <div class="afrisol-action-cards">
-                        <a href="<?php echo home_url('/solar-calculator'); ?>" class="afrisol-action-card">
+                        <a href="<?php echo esc_url(home_url('/solar-calculator')); ?>" class="afrisol-action-card">
                             <i class="fas fa-calculator"></i>
                             <span>Solar Calculator</span>
                         </a>
-                        <a href="<?php echo home_url('/get-quote'); ?>" class="afrisol-action-card">
+                        <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-action-card">
                             <i class="fas fa-file-invoice"></i>
                             <span>Get Quote</span>
                         </a>
-                        <a href="<?php echo home_url('/book-repair'); ?>" class="afrisol-action-card">
+                        <a href="<?php echo esc_url(home_url('/book-repair')); ?>" class="afrisol-action-card">
                             <i class="fas fa-tools"></i>
                             <span>Book Repair</span>
                         </a>
-                        <a href="<?php echo home_url('/contact'); ?>" class="afrisol-action-card">
+                        <a href="<?php echo esc_url(home_url('/contact')); ?>" class="afrisol-action-card">
                             <i class="fas fa-headset"></i>
                             <span>Contact Support</span>
                         </a>
@@ -249,7 +249,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboa
                     <i class="fas fa-shopping-bag"></i>
                     <h3>No orders yet</h3>
                     <p>When you make a purchase, your orders will appear here.</p>
-                    <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-primary">Start Shopping</a>
+                    <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-primary">Start Shopping</a>
                 </div>
                 <?php endif; ?>
                 
@@ -292,7 +292,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboa
                     <i class="fas fa-heart"></i>
                     <h3>Your wishlist is empty</h3>
                     <p>Save items you love by clicking the heart icon on products.</p>
-                    <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-primary">Browse Products</a>
+                    <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-primary">Browse Products</a>
                 </div>
                 <?php endif; ?>
                 

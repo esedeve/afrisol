@@ -13,7 +13,7 @@ get_header();
 <div class="afrisol-quote-page">
     <div class="afrisol-container">
         <div class="afrisol-breadcrumb">
-            <a href="<?php echo home_url(); ?>">Home</a>
+            <a href="<?php echo esc_url(home_url()); ?>">Home</a>
             <span class="afrisol-breadcrumb-separator">/</span>
             <span class="afrisol-breadcrumb-current">Get Quote</span>
         </div>
@@ -293,7 +293,7 @@ get_header();
                             </div>
                         </div>
                         
-                        <a href="<?php echo home_url(); ?>" class="afrisol-btn afrisol-btn-primary afrisol-mt-3">
+                        <a href="<?php echo esc_url(home_url()); ?>" class="afrisol-btn afrisol-btn-primary afrisol-mt-3">
                             <i class="fas fa-home"></i> Return to Homepage
                         </a>
                     </div>
