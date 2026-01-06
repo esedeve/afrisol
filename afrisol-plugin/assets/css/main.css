@@ -121,26 +121,25 @@ a:hover {
 /* ===== Sparkling Header Effect ===== */
 .afrisol-sparkle-text {
     display: inline-block;
+    color: var(--afrisol-secondary);
     background: linear-gradient(
         90deg,
-        var(--afrisol-primary) 0%,
-        var(--afrisol-secondary) 20%,
-        #FFD54F 40%,
-        var(--afrisol-secondary) 60%,
-        var(--afrisol-primary) 80%,
+        var(--afrisol-secondary) 0%,
+        #FFD54F 25%,
+        var(--afrisol-secondary) 50%,
+        #FFB74D 75%,
         var(--afrisol-secondary) 100%
     );
-    background-size: 300% auto;
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: sparkle 4s ease-in-out infinite;
+    animation: sparkle 3s ease-in-out infinite;
 }
 
 @keyframes sparkle {
     0% { background-position: 0% center; }
-    50% { background-position: 100% center; }
-    100% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
 /* ===== Container ===== */
@@ -154,6 +153,13 @@ a:hover {
 .afrisol-container-fluid {
     width: 100%;
     padding: 0 var(--container-padding);
+}
+
+/* ===== Full Width Sections ===== */
+.afrisol-full-width {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
 }
 
 /* ===== Sections ===== */

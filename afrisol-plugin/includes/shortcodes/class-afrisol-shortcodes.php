@@ -51,73 +51,71 @@ class Afrisol_Shortcodes {
         ob_start();
         ?>
         <header class="afrisol-header" id="afrisol-header">
-            <div class="afrisol-container">
-                <div class="afrisol-header-inner">
-                    <a href="<?php echo esc_url(home_url('/')); ?>" class="afrisol-logo">
-                        <img src="<?php echo esc_url($logo_url); ?>" alt="Afrisol - Solar Solutions">
-                    </a>
-                    
-                    <nav class="afrisol-nav" id="afrisol-nav">
-                        <ul class="afrisol-nav-menu">
-                            <li class="afrisol-nav-item">
-                                <a href="<?php echo esc_url(home_url('/')); ?>" class="afrisol-nav-link">Home</a>
-                            </li>
-                            <li class="afrisol-nav-item has-dropdown">
-                                <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-nav-link">
-                                    Products <i class="fas fa-chevron-down"></i>
-                                </a>
-                                <div class="afrisol-dropdown">
-                                    <a href="<?php echo esc_url(home_url('/afrisol/products?cat=solar-power')); ?>" class="afrisol-dropdown-item">Solar Power Systems</a>
-                                    <a href="<?php echo esc_url(home_url('/afrisol/products?cat=lighting')); ?>" class="afrisol-dropdown-item">Lighting Solutions</a>
-                                    <a href="<?php echo esc_url(home_url('/afrisol/products?cat=security')); ?>" class="afrisol-dropdown-item">Security Systems</a>
-                                    <a href="<?php echo esc_url(home_url('/afrisol/products?cat=mobility')); ?>" class="afrisol-dropdown-item">Solar Mobility</a>
-                                    <a href="<?php echo esc_url(home_url('/afrisol/products?cat=water-heating')); ?>" class="afrisol-dropdown-item">Water Heating</a>
-                                    <a href="<?php echo esc_url(home_url('/afrisol/products?cat=networking')); ?>" class="afrisol-dropdown-item">Networking</a>
-                                </div>
-                            </li>
-                            <li class="afrisol-nav-item has-dropdown">
-                                <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-nav-link">
-                                    Services <i class="fas fa-chevron-down"></i>
-                                </a>
-                                <div class="afrisol-dropdown">
-                                    <a href="<?php echo esc_url(home_url('/afrisol/services#installation')); ?>" class="afrisol-dropdown-item">Installation Services</a>
-                                    <a href="<?php echo esc_url(home_url('/afrisol/services#repair')); ?>" class="afrisol-dropdown-item">Repair & Maintenance</a>
-                                    <a href="<?php echo esc_url(home_url('/afrisol/solar-calculator')); ?>" class="afrisol-dropdown-item">Solar Calculator</a>
-                                </div>
-                            </li>
-                            <li class="afrisol-nav-item">
-                                <a href="<?php echo esc_url(home_url('/afrisol/about')); ?>" class="afrisol-nav-link">About</a>
-                            </li>
-                            <li class="afrisol-nav-item">
-                                <a href="<?php echo esc_url(home_url('/afrisol/blog')); ?>" class="afrisol-nav-link">Blog</a>
-                            </li>
-                            <li class="afrisol-nav-item">
-                                <a href="<?php echo esc_url(home_url('/afrisol/contact')); ?>" class="afrisol-nav-link">Contact</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    
-                    <div class="afrisol-header-actions">
-                        <a href="<?php echo esc_url(home_url('/afrisol/cart')); ?>" class="afrisol-header-icon" title="Cart">
-                            <i class="fas fa-shopping-cart"></i>
-                            <?php if ($cart_count > 0) : ?>
-                                <span class="badge"><?php echo esc_html($cart_count); ?></span>
-                            <?php endif; ?>
-                        </a>
-                        <?php if (is_user_logged_in()) : ?>
-                            <a href="<?php echo esc_url(home_url('/afrisol/portal')); ?>" class="afrisol-header-icon" title="My Account">
-                                <i class="fas fa-user"></i>
+            <div class="afrisol-header-inner">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="afrisol-logo">
+                    <img src="<?php echo esc_url($logo_url); ?>" alt="Afrisol - Solar Solutions">
+                </a>
+                
+                <nav class="afrisol-nav" id="afrisol-nav">
+                    <ul class="afrisol-nav-menu">
+                        <li class="afrisol-nav-item">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="afrisol-nav-link">Home</a>
+                        </li>
+                        <li class="afrisol-nav-item has-dropdown">
+                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-nav-link">
+                                Products <i class="fas fa-chevron-down"></i>
                             </a>
+                            <div class="afrisol-dropdown">
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=solar-power')); ?>" class="afrisol-dropdown-item">Solar Power Systems</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=lighting')); ?>" class="afrisol-dropdown-item">Lighting Solutions</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=security')); ?>" class="afrisol-dropdown-item">Security Systems</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=mobility')); ?>" class="afrisol-dropdown-item">Solar Mobility</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=water-heating')); ?>" class="afrisol-dropdown-item">Water Heating</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=networking')); ?>" class="afrisol-dropdown-item">Networking</a>
+                            </div>
+                        </li>
+                        <li class="afrisol-nav-item has-dropdown">
+                            <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-nav-link">
+                                Services <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="afrisol-dropdown">
+                                <a href="<?php echo esc_url(home_url('/afrisol/services#installation')); ?>" class="afrisol-dropdown-item">Installation Services</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/services#repair')); ?>" class="afrisol-dropdown-item">Repair & Maintenance</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/solar-calculator')); ?>" class="afrisol-dropdown-item">Solar Calculator</a>
+                            </div>
+                        </li>
+                        <li class="afrisol-nav-item">
+                            <a href="<?php echo esc_url(home_url('/afrisol/about')); ?>" class="afrisol-nav-link">About</a>
+                        </li>
+                        <li class="afrisol-nav-item">
+                            <a href="<?php echo esc_url(home_url('/afrisol/blog')); ?>" class="afrisol-nav-link">Blog</a>
+                        </li>
+                        <li class="afrisol-nav-item">
+                            <a href="<?php echo esc_url(home_url('/afrisol/contact')); ?>" class="afrisol-nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div class="afrisol-header-actions">
+                    <a href="<?php echo esc_url(home_url('/afrisol/cart')); ?>" class="afrisol-header-icon" title="Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <?php if ($cart_count > 0) : ?>
+                            <span class="badge"><?php echo esc_html($cart_count); ?></span>
                         <?php endif; ?>
-                        <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">
-                            Get Quote
+                    </a>
+                    <?php if (is_user_logged_in()) : ?>
+                        <a href="<?php echo esc_url(home_url('/afrisol/portal')); ?>" class="afrisol-header-icon" title="My Account">
+                            <i class="fas fa-user"></i>
                         </a>
-                        <button class="afrisol-menu-toggle" id="afrisol-menu-toggle" aria-label="Toggle Menu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
+                    <?php endif; ?>
+                    <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-sm">
+                        Get Quote
+                    </a>
+                    <button class="afrisol-menu-toggle" id="afrisol-menu-toggle" aria-label="Toggle Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </header>
@@ -357,16 +355,16 @@ class Afrisol_Shortcodes {
         <section class="afrisol-trust-section">
             <div class="afrisol-container">
                 <div class="afrisol-trust-grid">
-                    <div class="afrisol-trust-item afrisol-animate">
+                    <div class="afrisol-trust-item">
                         <div class="afrisol-trust-icon">
-                            <i class="fas fa-shipping-fast"></i>
+                            <i class="fas fa-truck"></i>
                         </div>
                         <div class="afrisol-trust-content">
                             <h4>Fast Delivery</h4>
                             <p>Nationwide delivery within 3-5 days</p>
                         </div>
                     </div>
-                    <div class="afrisol-trust-item afrisol-animate afrisol-animate-delay-1">
+                    <div class="afrisol-trust-item">
                         <div class="afrisol-trust-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
@@ -375,16 +373,16 @@ class Afrisol_Shortcodes {
                             <p>Up to 25 years on solar panels</p>
                         </div>
                     </div>
-                    <div class="afrisol-trust-item afrisol-animate afrisol-animate-delay-2">
+                    <div class="afrisol-trust-item">
                         <div class="afrisol-trust-icon">
-                            <i class="fas fa-tools"></i>
+                            <i class="fas fa-wrench"></i>
                         </div>
                         <div class="afrisol-trust-content">
                             <h4>Expert Installation</h4>
                             <p>Certified technicians at your service</p>
                         </div>
                     </div>
-                    <div class="afrisol-trust-item afrisol-animate afrisol-animate-delay-3">
+                    <div class="afrisol-trust-item">
                         <div class="afrisol-trust-icon">
                             <i class="fas fa-headset"></i>
                         </div>
@@ -418,7 +416,7 @@ class Afrisol_Shortcodes {
                 </div>
                 
                 <div class="afrisol-grid afrisol-grid-3">
-                    <div class="afrisol-service-card afrisol-animate">
+                    <div class="afrisol-service-card">
                         <div class="afrisol-service-icon">
                             <i class="fas fa-solar-panel"></i>
                         </div>
@@ -433,9 +431,9 @@ class Afrisol_Shortcodes {
                         <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
                     </div>
                     
-                    <div class="afrisol-service-card afrisol-animate afrisol-animate-delay-1">
+                    <div class="afrisol-service-card">
                         <div class="afrisol-service-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-video"></i>
                         </div>
                         <h3>Security & Surveillance</h3>
                         <p>Advanced security systems to protect your property with cutting-edge technology.</p>
@@ -448,9 +446,9 @@ class Afrisol_Shortcodes {
                         <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
                     </div>
                     
-                    <div class="afrisol-service-card afrisol-animate afrisol-animate-delay-2">
+                    <div class="afrisol-service-card">
                         <div class="afrisol-service-icon">
-                            <i class="fas fa-motorcycle"></i>
+                            <i class="fas fa-bicycle"></i>
                         </div>
                         <h3>Solar Mobility</h3>
                         <p>Eco-friendly electric vehicles powered by clean energy for sustainable transportation.</p>
@@ -478,9 +476,9 @@ class Afrisol_Shortcodes {
         <section class="afrisol-section afrisol-why-section">
             <div class="afrisol-container">
                 <div class="afrisol-why-grid">
-                    <div class="afrisol-why-image afrisol-animate">
+                    <div class="afrisol-why-image">
                         <div class="afrisol-why-image-wrapper">
-                            <img src="<?php echo AFRISOL_PLUGIN_URL; ?>assets/images/why-choose.jpg" alt="Why Choose Afrisol" 
+                            <img src="<?php echo esc_url(AFRISOL_PLUGIN_URL); ?>assets/images/why-choose.jpg" alt="Why Choose Afrisol" 
                                  onerror="this.style.background='linear-gradient(135deg, #1B5E20, #2E7D32)'; this.style.display='block'; this.style.height='400px';">
                         </div>
                         <div class="afrisol-why-stats">
@@ -489,7 +487,7 @@ class Afrisol_Shortcodes {
                         </div>
                     </div>
                     
-                    <div class="afrisol-why-content afrisol-animate">
+                    <div class="afrisol-why-content">
                         <h2 class="afrisol-sparkle-text">Why Choose Afrisol?</h2>
                         <p>We are committed to delivering premium solar solutions that power Africa's sustainable future. With years of experience and a dedicated team, we ensure quality, reliability, and customer satisfaction.</p>
                         
@@ -514,7 +512,7 @@ class Afrisol_Shortcodes {
                             </li>
                             <li class="afrisol-why-item">
                                 <div class="afrisol-why-item-icon">
-                                    <i class="fas fa-hand-holding-usd"></i>
+                                    <i class="fas fa-money-bill-wave"></i>
                                 </div>
                                 <div class="afrisol-why-item-content">
                                     <h4>Affordable Financing</h4>
@@ -584,7 +582,7 @@ class Afrisol_Shortcodes {
                         $stock_status = get_post_meta($product->ID, '_afrisol_stock_status', true);
                         $categories = get_the_terms($product->ID, 'afrisol_product_cat');
                     ?>
-                        <div class="afrisol-product-card afrisol-animate">
+                        <div class="afrisol-product-card">
                             <div class="afrisol-product-badges">
                                 <?php if ($sale_price && $sale_price < $price) : ?>
                                     <span class="afrisol-product-badge sale">Sale</span>
@@ -592,13 +590,13 @@ class Afrisol_Shortcodes {
                             </div>
                             
                             <div class="afrisol-product-actions">
-                                <button class="afrisol-product-action-btn afrisol-add-to-wishlist" data-product-id="<?php echo $product->ID; ?>" data-tooltip="Add to Wishlist">
+                                <button class="afrisol-product-action-btn afrisol-add-to-wishlist" data-product-id="<?php echo esc_attr($product->ID); ?>" data-tooltip="Add to Wishlist">
                                     <i class="far fa-heart"></i>
                                 </button>
-                                <button class="afrisol-product-action-btn afrisol-quick-view" data-product-id="<?php echo $product->ID; ?>" data-tooltip="Quick View">
+                                <button class="afrisol-product-action-btn afrisol-quick-view" data-product-id="<?php echo esc_attr($product->ID); ?>" data-tooltip="Quick View">
                                     <i class="far fa-eye"></i>
                                 </button>
-                                <button class="afrisol-product-action-btn afrisol-add-to-compare" data-product-id="<?php echo $product->ID; ?>" data-tooltip="Compare">
+                                <button class="afrisol-product-action-btn afrisol-add-to-compare" data-product-id="<?php echo esc_attr($product->ID); ?>" data-tooltip="Compare">
                                     <i class="fas fa-exchange-alt"></i>
                                 </button>
                             </div>

@@ -11,21 +11,51 @@
     width: 100%;
     z-index: 1000;
     padding: 1rem 0;
+    background: transparent;
     transition: all var(--transition-normal);
 }
 
+.afrisol-header .afrisol-nav-link {
+    color: var(--afrisol-white);
+}
+
+.afrisol-header .afrisol-nav-link:hover,
+.afrisol-header .afrisol-nav-link.active {
+    color: var(--afrisol-secondary);
+}
+
+.afrisol-header .afrisol-menu-toggle span {
+    background: var(--afrisol-white);
+}
+
 .afrisol-header.scrolled {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     padding: 0.75rem 0;
 }
 
+.afrisol-header.scrolled .afrisol-nav-link {
+    color: var(--afrisol-black);
+}
+
+.afrisol-header.scrolled .afrisol-nav-link:hover,
+.afrisol-header.scrolled .afrisol-nav-link.active {
+    color: var(--afrisol-primary);
+}
+
+.afrisol-header.scrolled .afrisol-menu-toggle span {
+    background: var(--afrisol-black);
+}
+
 .afrisol-header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
 }
 
 .afrisol-logo {
@@ -281,7 +311,9 @@
 /* ===== Hero Slider ===== */
 .afrisol-hero {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
     height: 100vh;
     min-height: 600px;
     max-height: 900px;
@@ -1151,9 +1183,18 @@
 
 /* ===== Footer ===== */
 .afrisol-footer {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
     background: var(--afrisol-black);
     color: var(--afrisol-white);
     padding-top: var(--spacing-3xl);
+}
+
+.afrisol-footer > .afrisol-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
 }
 
 .afrisol-footer-grid {
