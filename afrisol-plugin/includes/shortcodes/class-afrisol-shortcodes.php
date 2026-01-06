@@ -307,10 +307,10 @@ class Afrisol_Shortcodes {
                                         <?php endif; ?>
                                         <h1 class="afrisol-hero-title afrisol-sparkle-text"><?php echo esc_html($slide->post_title); ?></h1>
                                         <div class="afrisol-hero-buttons">
-                                            <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary">
+                                            <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary">
                                                 <i class="fas fa-file-invoice"></i> Get Free Quote
                                             </a>
-                                            <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-outline-white">
+                                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-outline-white">
                                                 <i class="fas fa-shopping-bag"></i> Shop Products
                                             </a>
                                         </div>
@@ -328,10 +328,10 @@ class Afrisol_Shortcodes {
                                         <h1 class="afrisol-hero-title afrisol-sparkle-text">Power Your Future with <span class="highlight">Clean Energy</span></h1>
                                         <p class="afrisol-hero-desc">Reliable solar power systems, security solutions, and electric mobility for homes and businesses across Africa.</p>
                                         <div class="afrisol-hero-buttons">
-                                            <a href="<?php echo esc_url(home_url('/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary">
+                                            <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary">
                                                 <i class="fas fa-file-invoice"></i> Get Free Quote
                                             </a>
-                                            <a href="<?php echo esc_url(home_url('/products')); ?>" class="afrisol-btn afrisol-btn-outline-white">
+                                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-outline-white">
                                                 <i class="fas fa-shopping-bag"></i> Shop Products
                                             </a>
                                         </div>
@@ -430,7 +430,7 @@ class Afrisol_Shortcodes {
                             <li><i class="fas fa-check"></i> Battery Storage</li>
                             <li><i class="fas fa-check"></i> Complete Solar Kits</li>
                         </ul>
-                        <a href="<?php echo home_url('/services'); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
                     </div>
                     
                     <div class="afrisol-service-card afrisol-animate afrisol-animate-delay-1">
@@ -445,7 +445,7 @@ class Afrisol_Shortcodes {
                             <li><i class="fas fa-check"></i> Access Control Systems</li>
                             <li><i class="fas fa-check"></i> Electric Fence & Alarms</li>
                         </ul>
-                        <a href="<?php echo home_url('/services'); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
                     </div>
                     
                     <div class="afrisol-service-card afrisol-animate afrisol-animate-delay-2">
@@ -460,7 +460,7 @@ class Afrisol_Shortcodes {
                             <li><i class="fas fa-check"></i> Tricycles</li>
                             <li><i class="fas fa-check"></i> Electric Vehicles</li>
                         </ul>
-                        <a href="<?php echo home_url('/services'); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -532,7 +532,7 @@ class Afrisol_Shortcodes {
                             </li>
                         </ul>
                         
-                        <a href="<?php echo home_url('/about'); ?>" class="afrisol-btn afrisol-btn-primary">Learn More About Us</a>
+                        <a href="<?php echo esc_url(home_url('/afrisol/about')); ?>" class="afrisol-btn afrisol-btn-primary">Learn More About Us</a>
                     </div>
                 </div>
             </div>
@@ -661,7 +661,7 @@ class Afrisol_Shortcodes {
                 </div>
                 
                 <div class="afrisol-text-center afrisol-mt-4">
-                    <a href="<?php echo home_url('/products'); ?>" class="afrisol-btn afrisol-btn-primary">View All Products</a>
+                    <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-primary">View All Products</a>
                 </div>
             </div>
         </section>
