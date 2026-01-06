@@ -438,14 +438,25 @@ function afrisol_admin_enqueue_scripts($hook) {
 add_action('admin_enqueue_scripts', 'afrisol_admin_enqueue_scripts');
 
 /**
- * Add PWA manifest
+ * Add PWA manifest and site icons
  */
 function afrisol_add_pwa_manifest() {
-    echo '<link rel="manifest" href="' . AFRISOL_PLUGIN_URL . 'manifest.json">' . "\n";
+    $images_url = AFRISOL_PLUGIN_URL . 'assets/images/';
+    
+    // Favicon
+    echo '<link rel="icon" type="image/x-icon" href="' . esc_url($images_url) . 'favicon.ico">' . "\n";
+    echo '<link rel="icon" type="image/png" sizes="16x16" href="' . esc_url($images_url) . 'favicon-16.png">' . "\n";
+    echo '<link rel="icon" type="image/png" sizes="32x32" href="' . esc_url($images_url) . 'favicon-32.png">' . "\n";
+    echo '<link rel="icon" type="image/png" sizes="48x48" href="' . esc_url($images_url) . 'favicon-48.png">' . "\n";
+    
+    // PWA manifest
+    echo '<link rel="manifest" href="' . esc_url(AFRISOL_PLUGIN_URL) . 'manifest.json">' . "\n";
     echo '<meta name="theme-color" content="#1B5E20">' . "\n";
+    
+    // Apple specific
     echo '<meta name="apple-mobile-web-app-capable" content="yes">' . "\n";
     echo '<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">' . "\n";
-    echo '<link rel="apple-touch-icon" href="' . AFRISOL_PLUGIN_URL . 'assets/images/logo-192.png">' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . esc_url($images_url) . 'apple-touch-icon.png">' . "\n";
 }
 add_action('wp_head', 'afrisol_add_pwa_manifest');
 
