@@ -1,0 +1,1018 @@
+/**
+ * Afrisol - Main Styles
+ * Solar Solutions for a Sustainable Africa
+ * 
+ * SLEEK DARK THEME
+ * Colors:
+ * - Primary (Deep Green): #1B5E20
+ * - Secondary (Warm Orange/Gold): #FF9800
+ * - Background (Dark Ash): #1a1a2e mixed with brand colors
+ * - White: #FFFFFF
+ */
+
+/* ===== CSS Variables ===== */
+:root {
+    /* Brand Colors */
+    --afrisol-primary: #1B5E20;
+    --afrisol-primary-light: #2E7D32;
+    --afrisol-primary-dark: #145214;
+    --afrisol-secondary: #FF9800;
+    --afrisol-secondary-light: #FFB74D;
+    --afrisol-secondary-dark: #F57C00;
+    
+    /* Dark Theme Colors */
+    --afrisol-bg-dark: #0f0f1a;
+    --afrisol-bg-card: #1a1a2e;
+    --afrisol-bg-card-hover: #252542;
+    --afrisol-bg-gradient: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #0d1f12 100%);
+    
+    --afrisol-white: #FFFFFF;
+    --afrisol-text: #e8e8e8;
+    --afrisol-text-muted: #a0a0a0;
+    --afrisol-black: #0a0a0a;
+    --afrisol-gray: #6b6b6b;
+    --afrisol-gray-light: rgba(255, 255, 255, 0.08);
+    --afrisol-gray-dark: #2a2a3e;
+    
+    /* Accent Glow */
+    --glow-primary: 0 0 20px rgba(27, 94, 32, 0.5), 0 0 40px rgba(27, 94, 32, 0.3);
+    --glow-secondary: 0 0 20px rgba(255, 152, 0, 0.5), 0 0 40px rgba(255, 152, 0, 0.3);
+    --glow-combined: 0 0 30px rgba(27, 94, 32, 0.3), 0 0 60px rgba(255, 152, 0, 0.2);
+    
+    /* Glassmorphism - Dark */
+    --glass-bg: rgba(26, 26, 46, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Border Radius - Curved */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Shadows - Dark Theme */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 40px rgba(255, 152, 0, 0.15), 0 0 80px rgba(27, 94, 32, 0.1);
+    
+    /* Container */
+    --container-max: 1400px;
+    --container-padding: 1.5rem;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--afrisol-text);
+    background: var(--afrisol-bg-dark);
+    background-image: 
+        radial-gradient(ellipse at 20% 80%, rgba(27, 94, 32, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 152, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(26, 26, 46, 0.8) 0%, transparent 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--afrisol-white);
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+h2 { font-size: clamp(2rem, 5vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--afrisol-text-muted);
+}
+
+a {
+    color: var(--afrisol-secondary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+a:hover {
+    color: var(--afrisol-secondary-light);
+    text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+}
+
+/* ===== Glowing Header Effect - Subtle ===== */
+.afrisol-sparkle-text,
+.afrisol-glow-text {
+    display: inline-block;
+    color: var(--afrisol-white);
+    text-shadow: 
+        0 0 10px rgba(255, 152, 0, 0.6),
+        0 0 20px rgba(255, 152, 0, 0.4),
+        0 0 30px rgba(255, 152, 0, 0.2);
+    animation: subtle-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-glow {
+    0% { 
+        text-shadow: 
+            0 0 10px rgba(255, 152, 0, 0.6),
+            0 0 20px rgba(255, 152, 0, 0.4),
+            0 0 30px rgba(255, 152, 0, 0.2);
+    }
+    100% { 
+        text-shadow: 
+            0 0 15px rgba(27, 94, 32, 0.6),
+            0 0 30px rgba(27, 94, 32, 0.4),
+            0 0 45px rgba(27, 94, 32, 0.2);
+    }
+}
+
+/* Section headings with glow */
+.afrisol-section-header h2 {
+    text-shadow: 
+        0 0 10px rgba(255, 152, 0, 0.4),
+        0 0 20px rgba(255, 152, 0, 0.2);
+}
+
+/* ===== Container ===== */
+.afrisol-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.afrisol-container-fluid {
+    width: 100%;
+    padding: 0 var(--container-padding);
+}
+
+/* ===== Full Width Sections ===== */
+.afrisol-full-width {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+/* ===== Sections ===== */
+.afrisol-section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.afrisol-section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.afrisol-section-header h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-section-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--afrisol-gray);
+}
+
+/* ===== Buttons - Enhanced with Animations ===== */
+.afrisol-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 0.75rem 1.75rem;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.afrisol-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.afrisol-btn:hover::before {
+    left: 100%;
+}
+
+.afrisol-btn-primary {
+    background: linear-gradient(135deg, var(--afrisol-primary) 0%, var(--afrisol-primary-light) 100%);
+    color: var(--afrisol-white);
+    box-shadow: 0 4px 20px rgba(27, 94, 32, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.afrisol-btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(27, 94, 32, 0.5), var(--glow-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-btn-primary:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.afrisol-btn-secondary {
+    background: linear-gradient(135deg, var(--afrisol-secondary) 0%, var(--afrisol-secondary-light) 100%);
+    color: var(--afrisol-white);
+    box-shadow: 0 4px 20px rgba(255, 152, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.afrisol-btn-secondary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(255, 152, 0, 0.5), var(--glow-secondary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-btn-secondary:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.afrisol-btn-outline {
+    background: transparent;
+    border: 2px solid var(--afrisol-primary);
+    color: var(--afrisol-primary);
+}
+
+.afrisol-btn-outline:hover {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+    transform: translateY(-3px);
+    box-shadow: var(--glow-primary);
+}
+
+.afrisol-btn-outline-white {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: var(--afrisol-white);
+    backdrop-filter: blur(5px);
+}
+
+.afrisol-btn-outline-white:hover {
+    background: var(--afrisol-white);
+    color: var(--afrisol-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+}
+
+.afrisol-btn-sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.75rem;
+}
+
+.afrisol-btn-lg {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+}
+
+/* ===== Glassmorphism Cards - Dark Theme ===== */
+.afrisol-glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), var(--shadow-glow);
+    padding: var(--spacing-xl);
+    transition: all var(--transition-normal);
+}
+
+.afrisol-glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl), 0 0 50px rgba(255, 152, 0, 0.1);
+    border-color: rgba(255, 152, 0, 0.2);
+}
+
+.afrisol-card {
+    background: var(--afrisol-bg-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.afrisol-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    background: var(--afrisol-bg-card-hover);
+    border-color: rgba(255, 152, 0, 0.15);
+}
+
+/* ===== Grid System ===== */
+.afrisol-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.afrisol-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.afrisol-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.afrisol-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 992px) {
+    .afrisol-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .afrisol-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .afrisol-grid-2,
+    .afrisol-grid-3,
+    .afrisol-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Flex Utilities ===== */
+.afrisol-flex {
+    display: flex;
+}
+
+.afrisol-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.afrisol-flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.afrisol-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.afrisol-gap-sm { gap: var(--spacing-sm); }
+.afrisol-gap-md { gap: var(--spacing-md); }
+.afrisol-gap-lg { gap: var(--spacing-lg); }
+
+/* ===== Forms ===== */
+.afrisol-form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.afrisol-form-label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--afrisol-black);
+}
+
+.afrisol-form-input,
+.afrisol-form-select,
+.afrisol-form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 2px solid var(--afrisol-gray-light);
+    border-radius: var(--radius-md);
+    background: var(--afrisol-white);
+    transition: all var(--transition-fast);
+}
+
+.afrisol-form-input:focus,
+.afrisol-form-select:focus,
+.afrisol-form-textarea:focus {
+    outline: none;
+    border-color: var(--afrisol-primary);
+    box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.1);
+}
+
+.afrisol-form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.afrisol-form-checkbox,
+.afrisol-form-radio {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.afrisol-form-checkbox input,
+.afrisol-form-radio input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--afrisol-primary);
+}
+
+/* ===== Loading Spinner ===== */
+.afrisol-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--afrisol-gray-light);
+    border-top-color: var(--afrisol-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Badges ===== */
+.afrisol-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+}
+
+.afrisol-badge-primary {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-badge-secondary {
+    background: var(--afrisol-secondary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-badge-success {
+    background: #4CAF50;
+    color: var(--afrisol-white);
+}
+
+.afrisol-badge-warning {
+    background: #FFC107;
+    color: var(--afrisol-black);
+}
+
+.afrisol-badge-danger {
+    background: #F44336;
+    color: var(--afrisol-white);
+}
+
+/* ===== Star Ratings ===== */
+.afrisol-stars {
+    display: inline-flex;
+    gap: 2px;
+    color: var(--afrisol-secondary);
+}
+
+.afrisol-stars i {
+    font-size: 1rem;
+}
+
+.afrisol-stars .empty {
+    color: var(--afrisol-gray-light);
+}
+
+/* ===== Price Display ===== */
+.afrisol-price {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--afrisol-primary);
+}
+
+.afrisol-price-original {
+    text-decoration: line-through;
+    color: var(--afrisol-gray);
+    font-size: 0.875em;
+    margin-right: var(--spacing-sm);
+}
+
+.afrisol-price-sale {
+    color: var(--afrisol-secondary);
+}
+
+/* ===== Stock Status ===== */
+.afrisol-stock {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+}
+
+.afrisol-stock-in {
+    color: #4CAF50;
+}
+
+.afrisol-stock-out {
+    color: #F44336;
+}
+
+.afrisol-stock-low {
+    color: #FF9800;
+}
+
+/* ===== Animations ===== */
+.afrisol-fade-in {
+    animation: fadeIn var(--transition-slow) ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.afrisol-slide-up {
+    animation: slideUp var(--transition-slow) ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.afrisol-scale-in {
+    animation: scaleIn var(--transition-normal) ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scroll Animation Classes */
+.afrisol-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.afrisol-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.afrisol-animate-delay-1 { transition-delay: 0.1s; }
+.afrisol-animate-delay-2 { transition-delay: 0.2s; }
+.afrisol-animate-delay-3 { transition-delay: 0.3s; }
+.afrisol-animate-delay-4 { transition-delay: 0.4s; }
+
+/* ===== Utility Classes ===== */
+.afrisol-text-center { text-align: center; }
+.afrisol-text-left { text-align: left; }
+.afrisol-text-right { text-align: right; }
+
+.afrisol-text-primary { color: var(--afrisol-primary); }
+.afrisol-text-secondary { color: var(--afrisol-secondary); }
+.afrisol-text-white { color: var(--afrisol-white); }
+.afrisol-text-gray { color: var(--afrisol-gray); }
+
+.afrisol-bg-primary { background-color: var(--afrisol-primary); }
+.afrisol-bg-secondary { background-color: var(--afrisol-secondary); }
+.afrisol-bg-white { background-color: var(--afrisol-white); }
+.afrisol-bg-cream { background-color: var(--afrisol-cream); }
+
+.afrisol-mt-0 { margin-top: 0; }
+.afrisol-mt-1 { margin-top: var(--spacing-sm); }
+.afrisol-mt-2 { margin-top: var(--spacing-md); }
+.afrisol-mt-3 { margin-top: var(--spacing-lg); }
+.afrisol-mt-4 { margin-top: var(--spacing-xl); }
+
+.afrisol-mb-0 { margin-bottom: 0; }
+.afrisol-mb-1 { margin-bottom: var(--spacing-sm); }
+.afrisol-mb-2 { margin-bottom: var(--spacing-md); }
+.afrisol-mb-3 { margin-bottom: var(--spacing-lg); }
+.afrisol-mb-4 { margin-bottom: var(--spacing-xl); }
+
+.afrisol-p-0 { padding: 0; }
+.afrisol-p-1 { padding: var(--spacing-sm); }
+.afrisol-p-2 { padding: var(--spacing-md); }
+.afrisol-p-3 { padding: var(--spacing-lg); }
+.afrisol-p-4 { padding: var(--spacing-xl); }
+
+.afrisol-hidden { display: none !important; }
+.afrisol-visible { display: block !important; }
+
+@media (max-width: 768px) {
+    .afrisol-hidden-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+    .afrisol-hidden-desktop { display: none !important; }
+}
+
+/* ===== Image Styles ===== */
+.afrisol-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.afrisol-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.afrisol-img-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Lazy loading placeholder */
+.afrisol-lazy {
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.afrisol-lazy.loaded {
+    opacity: 1;
+}
+
+/* ===== Tooltip ===== */
+.afrisol-tooltip {
+    position: relative;
+}
+
+.afrisol-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 0.75rem;
+    background: var(--afrisol-black);
+    color: var(--afrisol-white);
+    font-size: 0.75rem;
+    white-space: nowrap;
+    border-radius: var(--radius-sm);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 5px);
+}
+
+/* ===== Modal ===== */
+.afrisol-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.afrisol-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.afrisol-modal {
+    background: var(--afrisol-white);
+    border-radius: var(--radius-lg);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform var(--transition-normal);
+}
+
+.afrisol-modal-overlay.active .afrisol-modal {
+    transform: scale(1);
+}
+
+.afrisol-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--afrisol-gray-light);
+}
+
+.afrisol-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--afrisol-gray);
+    transition: color var(--transition-fast);
+}
+
+.afrisol-modal-close:hover {
+    color: var(--afrisol-black);
+}
+
+.afrisol-modal-body {
+    padding: var(--spacing-lg);
+}
+
+.afrisol-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--afrisol-gray-light);
+}
+
+/* ===== Alert Messages ===== */
+.afrisol-alert {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.afrisol-alert-success {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border: 1px solid #A5D6A7;
+}
+
+.afrisol-alert-error {
+    background: #FFEBEE;
+    color: #C62828;
+    border: 1px solid #EF9A9A;
+}
+
+.afrisol-alert-warning {
+    background: #FFF3E0;
+    color: #E65100;
+    border: 1px solid #FFCC80;
+}
+
+.afrisol-alert-info {
+    background: #E3F2FD;
+    color: #1565C0;
+    border: 1px solid #90CAF9;
+}
+
+/* ===== Tab Navigation ===== */
+.afrisol-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    border-bottom: 2px solid var(--afrisol-gray-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.afrisol-tab {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--afrisol-gray);
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.afrisol-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--afrisol-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-fast);
+}
+
+.afrisol-tab:hover,
+.afrisol-tab.active {
+    color: var(--afrisol-primary);
+}
+
+.afrisol-tab.active::after {
+    transform: scaleX(1);
+}
+
+.afrisol-tab-content {
+    display: none;
+}
+
+.afrisol-tab-content.active {
+    display: block;
+    animation: fadeIn var(--transition-normal) ease-out;
+}
+
+/* ===== Pagination ===== */
+.afrisol-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xl);
+}
+
+.afrisol-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--afrisol-white);
+    color: var(--afrisol-gray-dark);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-page-link:hover,
+.afrisol-page-link.active {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+/* ===== Breadcrumb ===== */
+.afrisol-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) 0;
+    font-size: 0.875rem;
+}
+
+.afrisol-breadcrumb a {
+    color: var(--afrisol-gray);
+}
+
+.afrisol-breadcrumb a:hover {
+    color: var(--afrisol-primary);
+}
+
+.afrisol-breadcrumb-separator {
+    color: var(--afrisol-gray-light);
+}
+
+.afrisol-breadcrumb-current {
+    color: var(--afrisol-primary);
+    font-weight: 600;
+}
+
+/* ===== Quantity Selector ===== */
+.afrisol-quantity {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid var(--afrisol-gray-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.afrisol-quantity-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--afrisol-gray-light);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.afrisol-quantity-btn:hover {
+    background: var(--afrisol-primary);
+    color: var(--afrisol-white);
+}
+
+.afrisol-quantity-input {
+    width: 50px;
+    height: 36px;
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.afrisol-quantity-input:focus {
+    outline: none;
+}
+
+/* ===== Responsive Typography ===== */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .afrisol-section {
+        padding: var(--spacing-2xl) 0;
+    }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .afrisol-header,
+    .afrisol-footer,
+    .afrisol-whatsapp-widget,
+    .afrisol-scroll-top,
+    .afrisol-pwa-prompt {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .afrisol-glass-card {
+        background: white;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

@@ -1,0 +1,1015 @@
+<?php
+/**
+ * Afrisol Shortcodes Class
+ */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+class Afrisol_Shortcodes {
+
+    public function __construct() {
+        // Header and Footer shortcodes
+        add_shortcode('afrisol_header', array($this, 'site_header'));
+        add_shortcode('afrisol_footer', array($this, 'site_footer'));
+        
+        // Landing page shortcodes
+        add_shortcode('afrisol_hero', array($this, 'hero_slider'));
+        add_shortcode('afrisol_trust_indicators', array($this, 'trust_indicators'));
+        add_shortcode('afrisol_services', array($this, 'services_section'));
+        add_shortcode('afrisol_why_choose', array($this, 'why_choose_section'));
+        add_shortcode('afrisol_featured_products', array($this, 'featured_products'));
+        add_shortcode('afrisol_testimonials', array($this, 'testimonials'));
+        add_shortcode('afrisol_map', array($this, 'map_section'));
+        add_shortcode('afrisol_contact_form', array($this, 'contact_form'));
+        
+        // Page shortcodes
+        add_shortcode('afrisol_products', array($this, 'products_page'));
+        add_shortcode('afrisol_cart', array($this, 'cart_page'));
+        add_shortcode('afrisol_checkout', array($this, 'checkout_page'));
+        add_shortcode('afrisol_customer_portal', array($this, 'customer_portal'));
+        add_shortcode('afrisol_solar_calculator', array($this, 'solar_calculator'));
+        add_shortcode('afrisol_quote_form', array($this, 'quote_form'));
+        add_shortcode('afrisol_repair_form', array($this, 'repair_form'));
+        
+        // Combined landing page shortcode
+        add_shortcode('afrisol_landing_page', array($this, 'landing_page'));
+    }
+
+    /**
+     * Site Header
+     */
+    public function site_header($atts) {
+        $logo_url = AFRISOL_PLUGIN_URL . 'assets/images/logo.webp';
+        $cart_count = 0;
+        if (class_exists('Afrisol_Cart')) {
+            $cart = new Afrisol_Cart();
+            $cart_count = $cart->get_count();
+        }
+        
+        ob_start();
+        ?>
+        <header class="afrisol-header" id="afrisol-header">
+            <div class="afrisol-header-inner">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="afrisol-logo">
+                    <img src="<?php echo esc_url($logo_url); ?>" alt="Afrisol - Solar Solutions">
+                </a>
+                
+                <nav class="afrisol-nav" id="afrisol-nav">
+                    <ul class="afrisol-nav-menu">
+                        <li class="afrisol-nav-item">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="afrisol-nav-link">Home</a>
+                        </li>
+                        <li class="afrisol-nav-item has-dropdown">
+                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-nav-link">
+                                Products <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="afrisol-dropdown">
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=solar-power')); ?>" class="afrisol-dropdown-item">Solar Power Systems</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=lighting')); ?>" class="afrisol-dropdown-item">Lighting Solutions</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=security')); ?>" class="afrisol-dropdown-item">Security Systems</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=mobility')); ?>" class="afrisol-dropdown-item">Solar Mobility</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=water-heating')); ?>" class="afrisol-dropdown-item">Water Heating</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/products?cat=networking')); ?>" class="afrisol-dropdown-item">Networking</a>
+                            </div>
+                        </li>
+                        <li class="afrisol-nav-item has-dropdown">
+                            <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-nav-link">
+                                Services <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="afrisol-dropdown">
+                                <a href="<?php echo esc_url(home_url('/afrisol/services#installation')); ?>" class="afrisol-dropdown-item">Installation Services</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/services#repair')); ?>" class="afrisol-dropdown-item">Repair & Maintenance</a>
+                                <a href="<?php echo esc_url(home_url('/afrisol/solar-calculator')); ?>" class="afrisol-dropdown-item">Solar Calculator</a>
+                            </div>
+                        </li>
+                        <li class="afrisol-nav-item">
+                            <a href="<?php echo esc_url(home_url('/afrisol/about')); ?>" class="afrisol-nav-link">About</a>
+                        </li>
+                        <li class="afrisol-nav-item">
+                            <a href="<?php echo esc_url(home_url('/afrisol/blog')); ?>" class="afrisol-nav-link">Blog</a>
+                        </li>
+                        <li class="afrisol-nav-item">
+                            <a href="<?php echo esc_url(home_url('/afrisol/contact')); ?>" class="afrisol-nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div class="afrisol-header-actions">
+                    <a href="<?php echo esc_url(home_url('/afrisol/cart')); ?>" class="afrisol-header-icon" title="Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <?php if ($cart_count > 0) : ?>
+                            <span class="badge"><?php echo esc_html($cart_count); ?></span>
+                        <?php endif; ?>
+                    </a>
+                    <?php if (is_user_logged_in()) : ?>
+                        <a href="<?php echo esc_url(home_url('/afrisol/portal')); ?>" class="afrisol-header-icon" title="My Account">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    <?php endif; ?>
+                    <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-sm">
+                        Get Quote
+                    </a>
+                    <button class="afrisol-menu-toggle" id="afrisol-menu-toggle" aria-label="Toggle Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Site Footer
+     */
+    public function site_footer($atts) {
+        $logo_url = AFRISOL_PLUGIN_URL . 'assets/images/logo-footer.webp';
+        $phone = get_option('afrisol_phone', '+234 XXX XXX XXXX');
+        $email = get_option('afrisol_email', 'info@afrisol.com');
+        $whatsapp = get_option('afrisol_whatsapp', '+234 XXX XXX XXXX');
+        $address = get_option('afrisol_address', 'Suite 15C, Al-Noor Shopping Complex, Ahmadu Bello Way Wuse 2, Abuja.');
+        $facebook = get_option('afrisol_facebook', 'https://facebook.com/afrisol');
+        $instagram = get_option('afrisol_instagram', 'https://instagram.com/afrisol');
+        $tiktok = get_option('afrisol_tiktok', 'https://tiktok.com/@afrisol');
+        
+        ob_start();
+        ?>
+        <footer class="afrisol-footer">
+            <div class="afrisol-container">
+                <div class="afrisol-footer-grid">
+                    <div class="afrisol-footer-about">
+                        <img src="<?php echo esc_url($logo_url); ?>" alt="Afrisol" class="afrisol-footer-logo">
+                        <p>Powering Africa's future with sustainable solar energy solutions. From residential to commercial installations, we provide reliable clean energy systems.</p>
+                        <div class="afrisol-footer-social">
+                            <a href="<?php echo esc_url($facebook); ?>" class="afrisol-social-link" target="_blank" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="<?php echo esc_url($instagram); ?>" class="afrisol-social-link" target="_blank" rel="noopener" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="<?php echo esc_url($tiktok); ?>" class="afrisol-social-link" target="_blank" rel="noopener" title="TikTok">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="afrisol-footer-links-col">
+                        <h4 class="afrisol-footer-title">Quick Links</h4>
+                        <ul class="afrisol-footer-links">
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/products')); ?>">Products</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/services')); ?>">Services</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/solar-calculator')); ?>">Solar Calculator</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>">Get a Quote</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/book-repair')); ?>">Book Repair</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="afrisol-footer-links-col">
+                        <h4 class="afrisol-footer-title">Company</h4>
+                        <ul class="afrisol-footer-links">
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/about')); ?>">About Us</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/blog')); ?>">Blog</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/contact')); ?>">Contact</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/afrisol/portal')); ?>">Customer Portal</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="afrisol-footer-contact-col">
+                        <h4 class="afrisol-footer-title">Contact Info</h4>
+                        <ul class="afrisol-footer-contact">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><?php echo esc_html($address); ?></span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone)); ?>"><?php echo esc_html($phone); ?></a>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a>
+                            </li>
+                            <li>
+                                <i class="fab fa-whatsapp"></i>
+                                <a href="https://wa.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $whatsapp)); ?>" target="_blank" rel="noopener"><?php echo esc_html($whatsapp); ?></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="afrisol-footer-bottom">
+                    <p>&copy; <?php echo esc_html(date('Y')); ?> Afrisol. All rights reserved.</p>
+                    <div class="afrisol-footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- WhatsApp Widget -->
+        <a href="https://wa.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $whatsapp)); ?>" class="afrisol-whatsapp-widget" target="_blank" rel="noopener" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        
+        <!-- Scroll to Top -->
+        <button class="afrisol-scroll-top" id="afrisol-scroll-top" title="Scroll to Top">
+            <svg class="afrisol-scroll-progress" viewBox="0 0 100 100">
+                <circle class="afrisol-scroll-progress-bg" cx="50" cy="50" r="46"></circle>
+                <circle class="afrisol-scroll-progress-bar" cx="50" cy="50" r="46"></circle>
+            </svg>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Complete Landing Page - All sections combined
+     */
+    public function landing_page($atts) {
+        ob_start();
+        
+        // Header
+        echo $this->site_header($atts);
+        
+        // Hero Slider
+        echo $this->hero_slider($atts);
+        
+        // Trust Indicators
+        echo $this->trust_indicators($atts);
+        
+        // Services Section
+        echo $this->services_section($atts);
+        
+        // Why Choose Us
+        echo $this->why_choose_section($atts);
+        
+        // Featured Products
+        echo $this->featured_products($atts);
+        
+        // Testimonials
+        echo $this->testimonials($atts);
+        
+        // Map Section
+        echo $this->map_section($atts);
+        
+        // Contact Form
+        echo $this->contact_form($atts);
+        
+        // Footer
+        echo $this->site_footer($atts);
+        
+        return ob_get_clean();
+    }
+
+    /**
+     * Hero Slider - With SVG Icons
+     */
+    public function hero_slider($atts) {
+        $slides = get_posts(array(
+            'post_type' => 'afrisol_slider',
+            'posts_per_page' => -1,
+            'meta_key' => '_afrisol_slider_order',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC'
+        ));
+
+        ob_start();
+        ?>
+        <section class="afrisol-hero">
+            <div class="afrisol-hero-slider">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <?php if ($slides) : foreach ($slides as $slide) : 
+                            $subtitle = get_post_meta($slide->ID, '_afrisol_slider_subtitle', true);
+                            $cta_text = get_post_meta($slide->ID, '_afrisol_slider_cta_text', true);
+                            $cta_link = get_post_meta($slide->ID, '_afrisol_slider_cta_link', true);
+                        ?>
+                            <div class="swiper-slide afrisol-hero-slide">
+                                <div class="afrisol-hero-bg">
+                                    <?php if (has_post_thumbnail($slide->ID)) : ?>
+                                        <?php echo get_the_post_thumbnail($slide->ID, 'full'); ?>
+                                    <?php else : ?>
+                                        <div class="afrisol-hero-placeholder-bg"></div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="afrisol-container">
+                                    <div class="afrisol-hero-content">
+                                        <?php if ($subtitle) : ?>
+                                            <span class="afrisol-hero-subtitle"><?php echo esc_html($subtitle); ?></span>
+                                        <?php endif; ?>
+                                        <h1 class="afrisol-hero-title afrisol-sparkle-text"><?php echo esc_html($slide->post_title); ?></h1>
+                                        <div class="afrisol-hero-buttons">
+                                            <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-lg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                                                Get Free Quote
+                                            </a>
+                                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-outline-white afrisol-btn-lg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                                Shop Products
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; else : ?>
+                            <div class="swiper-slide afrisol-hero-slide">
+                                <div class="afrisol-hero-bg">
+                                    <div class="afrisol-hero-placeholder-bg"></div>
+                                </div>
+                                <div class="afrisol-container">
+                                    <div class="afrisol-hero-content">
+                                        <span class="afrisol-hero-subtitle">☀️ Solar Solutions for Africa</span>
+                                        <h1 class="afrisol-hero-title afrisol-sparkle-text">Power Your Future with <span class="highlight">Clean Energy</span></h1>
+                                        <p class="afrisol-hero-desc">Reliable solar power systems, security solutions, and electric mobility for homes and businesses across Africa.</p>
+                                        <div class="afrisol-hero-buttons">
+                                            <a href="<?php echo esc_url(home_url('/afrisol/get-quote')); ?>" class="afrisol-btn afrisol-btn-secondary afrisol-btn-lg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                                                Get Free Quote
+                                            </a>
+                                            <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-outline-white afrisol-btn-lg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                                Shop Products
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="afrisol-hero-pagination swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Trust Indicators - With SVG Icons
+     */
+    public function trust_indicators($atts) {
+        ob_start();
+        ?>
+        <section class="afrisol-trust-section">
+            <div class="afrisol-container">
+                <div class="afrisol-trust-grid">
+                    <div class="afrisol-trust-item">
+                        <div class="afrisol-trust-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="4" rx="2"/><path d="M2 10h20"/><path d="M6 14h.01"/><path d="M10 14h.01"/></svg>
+                        </div>
+                        <div class="afrisol-trust-content">
+                            <h4>Fast Delivery</h4>
+                            <p>Nationwide delivery within 3-5 days</p>
+                        </div>
+                    </div>
+                    <div class="afrisol-trust-item">
+                        <div class="afrisol-trust-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <div class="afrisol-trust-content">
+                            <h4>Warranty Protection</h4>
+                            <p>Up to 25 years on solar panels</p>
+                        </div>
+                    </div>
+                    <div class="afrisol-trust-item">
+                        <div class="afrisol-trust-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <div class="afrisol-trust-content">
+                            <h4>Expert Installation</h4>
+                            <p>Certified technicians at your service</p>
+                        </div>
+                    </div>
+                    <div class="afrisol-trust-item">
+                        <div class="afrisol-trust-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="afrisol-trust-content">
+                            <h4>24/7 Support</h4>
+                            <p>Always here to help you</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Services Section - With SVG Icons
+     */
+    public function services_section($atts) {
+        $atts = shortcode_atts(array(
+            'limit' => 3
+        ), $atts);
+
+        ob_start();
+        ?>
+        <section class="afrisol-section afrisol-services-section">
+            <div class="afrisol-container">
+                <div class="afrisol-section-header">
+                    <h2 class="afrisol-sparkle-text">Our Services</h2>
+                    <p>Comprehensive solar and security solutions for your home and business</p>
+                </div>
+                
+                <div class="afrisol-grid afrisol-grid-3">
+                    <div class="afrisol-service-card">
+                        <div class="afrisol-service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                        </div>
+                        <h3>Solar Energy Solutions</h3>
+                        <p>Complete solar power systems including panels, inverters, and batteries for homes and businesses.</p>
+                        <ul class="afrisol-service-features">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Solar Panels Installation</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Inverter Systems</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Battery Storage</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Complete Solar Kits</li>
+                        </ul>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">Learn More</a>
+                    </div>
+                    
+                    <div class="afrisol-service-card">
+                        <div class="afrisol-service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+                        </div>
+                        <h3>Security & Surveillance</h3>
+                        <p>Advanced security systems to protect your property with cutting-edge technology.</p>
+                        <ul class="afrisol-service-features">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> CCTV Cameras</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> AI-Powered Cameras</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Access Control Systems</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Electric Fence & Alarms</li>
+                        </ul>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">Learn More</a>
+                    </div>
+                    
+                    <div class="afrisol-service-card">
+                        <div class="afrisol-service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
+                        </div>
+                        <h3>Solar Mobility</h3>
+                        <p>Eco-friendly electric vehicles powered by clean energy for sustainable transportation.</p>
+                        <ul class="afrisol-service-features">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Electric Scooters</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Electric Bikes</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Tricycles</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Electric Vehicles</li>
+                        </ul>
+                        <a href="<?php echo esc_url(home_url('/afrisol/services')); ?>" class="afrisol-btn afrisol-btn-primary afrisol-btn-sm">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Why Choose Us Section - With SVG Icons
+     */
+    public function why_choose_section($atts) {
+        ob_start();
+        ?>
+        <section class="afrisol-section afrisol-why-section">
+            <div class="afrisol-container">
+                <div class="afrisol-why-grid">
+                    <div class="afrisol-why-image">
+                        <div class="afrisol-why-image-wrapper">
+                            <div class="afrisol-image-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                                <span>Solar Energy</span>
+                            </div>
+                        </div>
+                        <div class="afrisol-why-stats">
+                            <div class="afrisol-why-stats-number">500+</div>
+                            <div class="afrisol-why-stats-label">Installations Completed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="afrisol-why-content">
+                        <h2 class="afrisol-sparkle-text">Why Choose Afrisol?</h2>
+                        <p>We are committed to delivering premium solar solutions that power Africa's sustainable future. With years of experience and a dedicated team, we ensure quality, reliability, and customer satisfaction.</p>
+                        
+                        <ul class="afrisol-why-list">
+                            <li class="afrisol-why-item">
+                                <div class="afrisol-why-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                                </div>
+                                <div class="afrisol-why-item-content">
+                                    <h4>Quality Products</h4>
+                                    <p>We source only the best equipment from trusted global manufacturers.</p>
+                                </div>
+                            </li>
+                            <li class="afrisol-why-item">
+                                <div class="afrisol-why-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </div>
+                                <div class="afrisol-why-item-content">
+                                    <h4>Expert Team</h4>
+                                    <p>Our certified technicians ensure professional installation and support.</p>
+                                </div>
+                            </li>
+                            <li class="afrisol-why-item">
+                                <div class="afrisol-why-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                                <div class="afrisol-why-item-content">
+                                    <h4>Affordable Financing</h4>
+                                    <p>Flexible payment plans to make solar accessible to everyone.</p>
+                                </div>
+                            </li>
+                            <li class="afrisol-why-item">
+                                <div class="afrisol-why-item-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="afrisol-why-item-content">
+                                    <h4>Sustainable Impact</h4>
+                                    <p>Join us in building a greener future for Africa.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <a href="<?php echo esc_url(home_url('/afrisol/about')); ?>" class="afrisol-btn afrisol-btn-primary">Learn More About Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Featured Products
+     */
+    public function featured_products($atts) {
+        $atts = shortcode_atts(array(
+            'limit' => 8
+        ), $atts);
+
+        $products = get_posts(array(
+            'post_type' => 'afrisol_product',
+            'posts_per_page' => $atts['limit'],
+            'meta_query' => array(
+                array(
+                    'key' => '_afrisol_featured',
+                    'value' => '1'
+                )
+            )
+        ));
+
+        // If no featured products, get latest products
+        if (empty($products)) {
+            $products = get_posts(array(
+                'post_type' => 'afrisol_product',
+                'posts_per_page' => $atts['limit']
+            ));
+        }
+
+        ob_start();
+        ?>
+        <section class="afrisol-section afrisol-products-section">
+            <div class="afrisol-container">
+                <div class="afrisol-section-header">
+                    <h2 class="afrisol-sparkle-text">Featured Products</h2>
+                    <p>Best-selling solar solutions and security equipment</p>
+                </div>
+                
+                <div class="afrisol-grid afrisol-grid-4">
+                    <?php if ($products) : foreach ($products as $product) : 
+                        $price = get_post_meta($product->ID, '_afrisol_price', true);
+                        $sale_price = get_post_meta($product->ID, '_afrisol_sale_price', true);
+                        $stock_status = get_post_meta($product->ID, '_afrisol_stock_status', true);
+                        $categories = get_the_terms($product->ID, 'afrisol_product_cat');
+                    ?>
+                        <div class="afrisol-product-card">
+                            <div class="afrisol-product-badges">
+                                <?php if ($sale_price && $sale_price < $price) : ?>
+                                    <span class="afrisol-product-badge sale">Sale</span>
+                                <?php endif; ?>
+                            </div>
+                            
+                            <div class="afrisol-product-actions">
+                                <button class="afrisol-product-action-btn afrisol-add-to-wishlist" data-product-id="<?php echo esc_attr($product->ID); ?>" data-tooltip="Add to Wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="afrisol-product-action-btn afrisol-quick-view" data-product-id="<?php echo esc_attr($product->ID); ?>" data-tooltip="Quick View">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button class="afrisol-product-action-btn afrisol-add-to-compare" data-product-id="<?php echo esc_attr($product->ID); ?>" data-tooltip="Compare">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="afrisol-product-image">
+                                <?php if (has_post_thumbnail($product->ID)) : ?>
+                                    <?php echo get_the_post_thumbnail($product->ID, 'medium'); ?>
+                                <?php else : ?>
+                                    <div style="background: #f5f5f5; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-image" style="font-size: 3rem; color: #ddd;"></i>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            
+                            <div class="afrisol-product-info">
+                                <?php if ($categories) : ?>
+                                    <span class="afrisol-product-category"><?php echo esc_html($categories[0]->name); ?></span>
+                                <?php endif; ?>
+                                
+                                <h4 class="afrisol-product-title">
+                                    <a href="<?php echo get_permalink($product->ID); ?>"><?php echo esc_html($product->post_title); ?></a>
+                                </h4>
+                                
+                                <div class="afrisol-product-rating">
+                                    <span class="stars">
+                                        <?php 
+                                        $rating = get_post_meta($product->ID, '_afrisol_average_rating', true) ?: 4;
+                                        for ($i = 1; $i <= 5; $i++) {
+                                            echo $i <= $rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+                                        }
+                                        ?>
+                                    </span>
+                                    <span class="count">(<?php echo get_post_meta($product->ID, '_afrisol_review_count', true) ?: 0; ?>)</span>
+                                </div>
+                                
+                                <div class="afrisol-product-price">
+                                    <?php if ($sale_price && $sale_price < $price) : ?>
+                                        <span class="original">₦<?php echo number_format($price); ?></span>
+                                        <span class="current">₦<?php echo number_format($sale_price); ?></span>
+                                    <?php else : ?>
+                                        <span class="current">₦<?php echo number_format($price); ?></span>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <div class="afrisol-product-footer">
+                                    <button class="afrisol-btn afrisol-btn-primary afrisol-btn-sm afrisol-add-to-cart" data-product-id="<?php echo $product->ID; ?>">
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                    <a href="<?php echo get_permalink($product->ID); ?>" class="afrisol-btn afrisol-btn-outline afrisol-btn-sm">
+                                        Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; else : ?>
+                        <div class="afrisol-no-products" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                            <p>No products found. Add products in the WordPress admin.</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                
+                <div class="afrisol-text-center afrisol-mt-4">
+                    <a href="<?php echo esc_url(home_url('/afrisol/products')); ?>" class="afrisol-btn afrisol-btn-primary">View All Products</a>
+                </div>
+            </div>
+        </section>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Testimonials
+     */
+    public function testimonials($atts) {
+        $testimonials = get_posts(array(
+            'post_type' => 'afrisol_testimonial',
+            'posts_per_page' => 6
+        ));
+
+        ob_start();
+        ?>
+        <section class="afrisol-section afrisol-testimonials-section">
+            <div class="afrisol-container">
+                <div class="afrisol-section-header">
+                    <h2 class="afrisol-sparkle-text">What Our Customers Say</h2>
+                    <p>Real feedback from satisfied customers across Africa</p>
+                </div>
+                
+                <div class="afrisol-testimonials-slider">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <?php if ($testimonials) : foreach ($testimonials as $testimonial) : 
+                                $rating = get_post_meta($testimonial->ID, '_afrisol_rating', true) ?: 5;
+                                $location = get_post_meta($testimonial->ID, '_afrisol_location', true);
+                                $designation = get_post_meta($testimonial->ID, '_afrisol_designation', true);
+                            ?>
+                                <div class="swiper-slide">
+                                    <div class="afrisol-testimonial-card">
+                                        <div class="afrisol-testimonial-stars">
+                                            <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                                <i class="fas fa-star<?php echo $i <= $rating ? '' : '-o'; ?>"></i>
+                                            <?php endfor; ?>
+                                        </div>
+                                        <p class="afrisol-testimonial-text"><?php echo esc_html($testimonial->post_content); ?></p>
+                                        <div class="afrisol-testimonial-author">
+                                            <div class="afrisol-testimonial-avatar">
+                                                <?php if (has_post_thumbnail($testimonial->ID)) : ?>
+                                                    <?php echo get_the_post_thumbnail($testimonial->ID, 'thumbnail'); ?>
+                                                <?php else : ?>
+                                                    <div style="background: #FF9800; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold;">
+                                                        <?php echo strtoupper(substr($testimonial->post_title, 0, 1)); ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="afrisol-testimonial-info">
+                                                <h4><?php echo esc_html($testimonial->post_title); ?></h4>
+                                                <?php if ($location) : ?>
+                                                    <div class="afrisol-testimonial-location">
+                                                        <i class="fas fa-map-marker-alt"></i> <?php echo esc_html($location); ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                                <div class="afrisol-google-badge">
+                                                    <img src="https://www.google.com/favicon.ico" alt="Google"> Verified Review
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; else : ?>
+                                <!-- Default testimonials -->
+                                <div class="swiper-slide">
+                                    <div class="afrisol-testimonial-card">
+                                        <div class="afrisol-testimonial-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="afrisol-testimonial-text">"Afrisol transformed our home with their solar installation. We now enjoy uninterrupted power and have significantly reduced our electricity bills. Highly recommend their services!"</p>
+                                        <div class="afrisol-testimonial-author">
+                                            <div class="afrisol-testimonial-avatar">
+                                                <div style="background: #FF9800; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold;">A</div>
+                                            </div>
+                                            <div class="afrisol-testimonial-info">
+                                                <h4>Adebayo Johnson</h4>
+                                                <div class="afrisol-testimonial-location">
+                                                    <i class="fas fa-map-marker-alt"></i> Lagos, Nigeria
+                                                </div>
+                                                <div class="afrisol-google-badge">
+                                                    <img src="https://www.google.com/favicon.ico" alt="Google"> Verified Review
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="afrisol-testimonials-pagination swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Map Section
+     */
+    public function map_section($atts) {
+        $address = get_option('afrisol_address', 'Suite 15C, Al-Noor Shopping Complex, Al-Noor Mosque, Ahmadu Bello Way Wuse 2, Abuja.');
+        $phone = get_option('afrisol_phone', '+234 XXX XXX XXXX');
+        $email = get_option('afrisol_email', 'info@afrisol.com');
+        $hours = get_option('afrisol_business_hours', 'Mon-Fri: 8AM-6PM, Sat: 9AM-4PM');
+
+        ob_start();
+        ?>
+        <section class="afrisol-section afrisol-map-section">
+            <div class="afrisol-container">
+                <div class="afrisol-map-grid">
+                    <div class="afrisol-map-info afrisol-animate">
+                        <h3>Visit Our Location</h3>
+                        <ul class="afrisol-contact-details">
+                            <li class="afrisol-contact-item">
+                                <div class="afrisol-contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="afrisol-contact-text">
+                                    <h4>Address</h4>
+                                    <p><?php echo esc_html($address); ?></p>
+                                </div>
+                            </li>
+                            <li class="afrisol-contact-item">
+                                <div class="afrisol-contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="afrisol-contact-text">
+                                    <h4>Phone</h4>
+                                    <a href="tel:<?php echo preg_replace('/[^0-9+]/', '', $phone); ?>"><?php echo esc_html($phone); ?></a>
+                                </div>
+                            </li>
+                            <li class="afrisol-contact-item">
+                                <div class="afrisol-contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="afrisol-contact-text">
+                                    <h4>Email</h4>
+                                    <a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a>
+                                </div>
+                            </li>
+                            <li class="afrisol-contact-item">
+                                <div class="afrisol-contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="afrisol-contact-text">
+                                    <h4>Business Hours</h4>
+                                    <p><?php echo esc_html($hours); ?></p>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="https://maps.google.com/?q=<?php echo urlencode($address); ?>" target="_blank" class="afrisol-btn afrisol-btn-primary">
+                            <i class="fas fa-directions"></i> Get Directions
+                        </a>
+                    </div>
+                    
+                    <div class="afrisol-map-wrapper afrisol-animate">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.0273!2d7.4731!3d9.0600!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDMnMzYuMCJOIDfCsDI4JzIzLjIiRQ!5e0!3m2!1sen!2sng!4v1234567890"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Contact Form
+     */
+    public function contact_form($atts) {
+        ob_start();
+        ?>
+        <section class="afrisol-section afrisol-contact-section">
+            <div class="afrisol-container">
+                <div class="afrisol-section-header">
+                    <h2 class="afrisol-sparkle-text">Get In Touch</h2>
+                    <p>Have questions? We'd love to hear from you!</p>
+                </div>
+                
+                <div class="afrisol-contact-grid">
+                    <div class="afrisol-contact-form-wrapper afrisol-animate">
+                        <h3>Send Us a Message</h3>
+                        <form id="afrisolContactForm" class="afrisol-contact-form">
+                            <div class="afrisol-form-row">
+                                <div class="afrisol-form-group">
+                                    <label class="afrisol-form-label">Your Name *</label>
+                                    <input type="text" name="name" class="afrisol-form-input" required>
+                                </div>
+                                <div class="afrisol-form-group">
+                                    <label class="afrisol-form-label">Email Address *</label>
+                                    <input type="email" name="email" class="afrisol-form-input" required>
+                                </div>
+                            </div>
+                            <div class="afrisol-form-row">
+                                <div class="afrisol-form-group">
+                                    <label class="afrisol-form-label">Phone Number</label>
+                                    <input type="tel" name="phone" class="afrisol-form-input">
+                                </div>
+                                <div class="afrisol-form-group">
+                                    <label class="afrisol-form-label">Subject *</label>
+                                    <select name="subject" class="afrisol-form-select" required>
+                                        <option value="">Select Subject</option>
+                                        <option value="General Inquiry">General Inquiry</option>
+                                        <option value="Product Information">Product Information</option>
+                                        <option value="Service Request">Service Request</option>
+                                        <option value="Support">Support</option>
+                                        <option value="Feedback">Feedback</option>
+                                        <option value="Complaint">Complaint</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="afrisol-form-group">
+                                <label class="afrisol-form-label">Message *</label>
+                                <textarea name="message" class="afrisol-form-textarea" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="afrisol-btn afrisol-btn-primary afrisol-btn-lg">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="afrisol-contact-info-wrapper afrisol-animate">
+                        <div class="afrisol-info-card">
+                            <div class="afrisol-info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="afrisol-info-content">
+                                <h4>Call Us</h4>
+                                <a href="tel:<?php echo preg_replace('/[^0-9+]/', '', get_option('afrisol_phone')); ?>"><?php echo esc_html(get_option('afrisol_phone')); ?></a>
+                            </div>
+                        </div>
+                        
+                        <div class="afrisol-info-card">
+                            <div class="afrisol-info-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="afrisol-info-content">
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/<?php echo preg_replace('/[^0-9]/', '', get_option('afrisol_whatsapp')); ?>" target="_blank"><?php echo esc_html(get_option('afrisol_whatsapp')); ?></a>
+                            </div>
+                        </div>
+                        
+                        <div class="afrisol-info-card">
+                            <div class="afrisol-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="afrisol-info-content">
+                                <h4>Email Us</h4>
+                                <a href="mailto:<?php echo esc_attr(get_option('afrisol_email')); ?>"><?php echo esc_html(get_option('afrisol_email')); ?></a>
+                            </div>
+                        </div>
+                        
+                        <div class="afrisol-info-card">
+                            <div class="afrisol-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="afrisol-info-content">
+                                <h4>Visit Us</h4>
+                                <p><?php echo esc_html(get_option('afrisol_address')); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Products Page
+     */
+    public function products_page($atts) {
+        ob_start();
+        include AFRISOL_PLUGIN_DIR . 'templates/products.php';
+        return ob_get_clean();
+    }
+
+    /**
+     * Cart Page
+     */
+    public function cart_page($atts) {
+        ob_start();
+        include AFRISOL_PLUGIN_DIR . 'templates/cart.php';
+        return ob_get_clean();
+    }
+
+    /**
+     * Checkout Page
+     */
+    public function checkout_page($atts) {
+        ob_start();
+        include AFRISOL_PLUGIN_DIR . 'templates/checkout.php';
+        return ob_get_clean();
+    }
+
+    /**
+     * Customer Portal
+     */
+    public function customer_portal($atts) {
+        ob_start();
+        include AFRISOL_PLUGIN_DIR . 'templates/customer-portal.php';
+        return ob_get_clean();
+    }
+
+    /**
+     * Solar Calculator
+     */
+    public function solar_calculator($atts) {
+        ob_start();
+        include AFRISOL_PLUGIN_DIR . 'templates/solar-calculator.php';
+        return ob_get_clean();
+    }
+
+    /**
+     * Quote Form
+     */
+    public function quote_form($atts) {
+        ob_start();
+        include AFRISOL_PLUGIN_DIR . 'templates/get-quote.php';
+        return ob_get_clean();
+    }
+
+    /**
+     * Repair Form
+     */
+    public function repair_form($atts) {
+        ob_start();
+        include AFRISOL_PLUGIN_DIR . 'templates/book-repair.php';
+        return ob_get_clean();
+    }
+}
+
+// Initialize shortcodes
+new Afrisol_Shortcodes();
